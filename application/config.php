@@ -91,7 +91,7 @@ return [
     // 路由使用完整匹配
     'route_complete_match' => false,
     // 路由配置文件（支持配置多个）
-    'route_config_file' => ['routes/web'],
+    'route_config_file' => ['routes/web','routes/api'],
     // 是否开启路由解析缓存
     'route_check_cache' => false,
     // 是否强制使用路由
