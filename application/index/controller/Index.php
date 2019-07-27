@@ -2,6 +2,8 @@
 
 namespace app\index\controller;
 
+use think\Db;
+
 class Index
 {
     public function index()
@@ -11,6 +13,7 @@ class Index
 
     public function hello()
     {
-        phpinfo();
+        $res = Db::table('emlog_tag')->find();
+        dump($res);
     }
 }
