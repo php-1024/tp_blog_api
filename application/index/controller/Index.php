@@ -13,7 +13,7 @@ class Index
 
     public function hello()
     {
-        $res = Db::table('emlog_tag')->where([])->limit(0)->select();
+        $res = Db::table('emlog_tag')->where([])->select();
         dump($res);
     }
 }
