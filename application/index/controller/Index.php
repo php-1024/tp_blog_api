@@ -14,6 +14,7 @@ class Index
     public function hello()
     {
         $res = Db::table('emlog_tag')->where([])->select();
-        dump($res);
+        $res1 = Db::table('emlog_options')->where([])->select();
+        dump($res, $res1);
     }
 }
