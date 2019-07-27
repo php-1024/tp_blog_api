@@ -12,5 +12,5 @@
 use think\Route;
 
 Route::group('api', function () {
-    Route::any('api', 'Login/login');
+    Route::any('login', 'Login/login');
 });
