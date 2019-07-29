@@ -32,7 +32,7 @@ class Base extends Model
         }
         $res = self::where($where)->order($orderby, $sort)->field($field)->find();
         if (!empty($res)) {
-            return $res->toarray();
+            return $res->toArray();
         } else {
             return false;
         }
