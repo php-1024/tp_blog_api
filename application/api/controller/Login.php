@@ -2,6 +2,7 @@
 
 namespace app\api\controller;
 
+use app\api\model\Blog;
 use think\Db;
 
 class Login
@@ -9,7 +10,7 @@ class Login
 
     public function login()
     {
-        $res = Db::name('tag')->where([])->select();
-        dump($res);
+        $blog = Blog::getOne(['id' => 1]);
+        dump($blog);
     }
 }
