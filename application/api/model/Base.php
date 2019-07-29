@@ -54,7 +54,7 @@ class Base extends Model
         if (!empty($limit)) {
             $model = $model->limit($limit);
         }
-        $res = $model->select()->toArray();
+        $res = $model->select();
 
         if (!empty($res)) {
             return $res;
