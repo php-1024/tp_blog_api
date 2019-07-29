@@ -12,7 +12,7 @@ class Login
     public function login(Request $request)
     {
         $id = $request->get('id');
-        $blog = Blog::getOne(['id' => $id], ['id', 'title', 'sort_id']);
+        $blog = Blog::getOne(['id' => $id]);
         dump($blog);
     }
 }
