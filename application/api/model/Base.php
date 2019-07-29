@@ -30,7 +30,7 @@ class Base extends Model
         if (empty($field)) {
             $field = [];
         }
-        $res = self::where($where)->order($orderby, $sort)->get();
+        $res = self::where($where)->order($orderby, $sort)->field($field)->find();
         if (!empty($res)) {
             return $res;
         } else {
