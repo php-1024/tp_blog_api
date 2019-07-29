@@ -13,6 +13,8 @@ class Login
     {
         $id = $request->get('id');
         $blog = Blog::getOne(['id' => $id]);
+        $list = Blog::getList();
         dump($blog);
+        dump($list);
     }
 }
