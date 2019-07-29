@@ -57,7 +57,7 @@ class Base extends Model
         $res = $model->select();
 
         if (!empty($res)) {
-            return $res->toarray();
+            return $res;
         } else {
             return false;
         }
