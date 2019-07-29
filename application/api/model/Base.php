@@ -32,7 +32,32 @@ class Base extends Model
         }
         $res = self::where($where)->order($orderby, $sort)->field($field)->find();
         if (!empty($res)) {
-            return $res->toarray();
+            return $res->toArray();
+        } else {
+            return false;
+        }
+    }
+
+    //获取列表数据
+    public static function getList($where = [], $field = [], $limit = 0, $orderby = "", $sort = 'DESC')
+    {
+        if (empty($field)) {
+            $field = '*';
+        }
+        $model = self::field($field);
+        if (!empty($where)) {
+            $model = $model->where($where);
+        }
+        if (!empty($orderby)) {
+            $model = $model->order($orderby, $sort);
+        }
+        if (!empty($limit)) {
+            $model = $model->limit($limit);
+        }
+        $res = $model->select();
+
+        if (!empty($res)) {
+            return $res->toArray();
         } else {
             return false;
         }
