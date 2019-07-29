@@ -10,6 +10,7 @@ class Login
 
     public function login()
     {
+        $blog = Blog::getOne(['id', 1]);
         $blog = Blog::getOne(['id' => 1]);
         dump($blog);
     }
