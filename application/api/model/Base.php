@@ -28,7 +28,7 @@ class Base extends Model
     {
         // 默认获取全部字段
         if (empty($field)) {
-            $field = "*";
+            $field = [];
         }
         $res = self::where($where)->order($orderby, $sort)->get($field);
         if (!empty($res)) {
