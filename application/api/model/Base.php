@@ -31,6 +31,7 @@ class Base extends Model
             $field = "*";
         }
         $res = self::where($where)->order($orderby, $sort)->select($field);
+        return $res;
         if (!empty($res)) {
             return $res;
         } else {
