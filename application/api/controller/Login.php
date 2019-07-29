@@ -4,13 +4,15 @@ namespace app\api\controller;
 
 use app\api\model\Blog;
 use think\Db;
+use think\Request;
 
 class Login
 {
 
-    public function login()
+    public function login(Request $request)
     {
-        $blog = Blog::getOne(['id', 1]);
+        $id = $request->get('id');
+        $blog = Blog::getOne(['id' => $id]);
         dump($blog);
     }
 }
