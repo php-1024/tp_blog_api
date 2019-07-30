@@ -89,4 +89,23 @@ class Base extends Model
         }
     }
 
+    // 添加数据
+    public static function AddData($data = [], $where = [])
+    {
+        if (!empty($where)) {
+            $res = self::where($where)->find();
+            if (empty($res)) {
+                $res = self::create($data);
+            }
+        } else {
+            $res = self::create($data);
+        }
+
+        if (!empty($res)) {
+            return $res->toArray();
+        } else {
+            return false;
+        }
+    }
+
 }
