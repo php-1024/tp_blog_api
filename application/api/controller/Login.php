@@ -15,13 +15,13 @@ class Login
         $title = Blog::getValue(['id' => $id], 'title');
         $blog = Blog::getOne(['id' => $id]);
         $list = Blog::getList();
-        $list = Blog::getPaginate();
+        $paginate = Blog::getPaginate();
         if (empty($id)) {
             dump("缺少查询的id");
         } else {
             dump($title);
             dump($blog);
         }
-        dump($list);
+        dump($paginate);
     }
 }
