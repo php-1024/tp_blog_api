@@ -15,7 +15,7 @@ class Login
         $title = Blog::getValue(['id' => $id], 'title');
         $blog = Blog::getOne(['id' => $id]);
         $list = Blog::getList();
-        $paginate = Blog::getPaginate([], [], ['limit' => 10, 'page' => 2], 'id', 'ASC');
+        $paginate = Blog::getPaginate([], [], 12, 'id', 'ASC');
         if (empty($id)) {
             dump("缺少查询的id");
         } else {
