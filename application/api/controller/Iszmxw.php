@@ -69,9 +69,10 @@ class Iszmxw
 
     public function delete(Request $request)
     {
+        $id = $request->get('id');
         Db::startTrans();
         try {
-            $re = Blog::selected_delete(['id' => 1]);
+            $re = Blog::selected_delete(['id' => $id]);
             Db::commit();
         } catch (\Exception $e) {
             dump($e);
