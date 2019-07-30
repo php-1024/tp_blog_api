@@ -50,9 +50,9 @@ class Iszmxw
         Db::startTrans();
         try {
             Blog::EditData([
-                'sort_id' => 1
+                'id' => 1
             ], [
-                'title' => "我修改了标题",
+                'title' => "哈哈成功搞定",
                 'content' => "修改了文章内容",
                 'excerpt' => "编辑摘录",
                 'alias' => "编辑别名"
