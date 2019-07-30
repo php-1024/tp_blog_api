@@ -86,7 +86,7 @@ class Base extends Model
             $res = $model->paginate($paginate);
         }
         if (!empty($res)) {
-            return $res;
+            return $res->toArray();
         } else {
             return false;
         }
