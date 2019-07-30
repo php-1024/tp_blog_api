@@ -16,6 +16,7 @@ Route::group('api', function () {
     Route::group('iszmxw', function () {
         Route::any('login', 'api/Iszmxw/login');
         Route::any('create', 'api/Iszmxw/create');
+        Route::any('edit', 'api/Iszmxw/edit');
     });
 
     Route::group('user', function () {

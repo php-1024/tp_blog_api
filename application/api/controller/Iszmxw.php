@@ -43,4 +43,26 @@ class Iszmxw
         }
         return "添加数据成功";
     }
+
+
+    public function edit(Request $request)
+    {
+        Db::startTrans();
+        try {
+            Blog::EditData([
+                'sort_id' => 1
+            ], [
+                'title' => "我修改了标题",
+                'content' => "修改了文章内容",
+                'excerpt' => "编辑摘录",
+                'alias' => "编辑别名"
+            ]);
+            Db::commit();
+        } catch (\Exception $e) {
+            dump($e);
+            Db::rollback();
+            return "修改数据失败";
+        }
+        return "添加数据成功";
+    }
 }
