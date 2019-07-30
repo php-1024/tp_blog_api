@@ -65,4 +65,31 @@ class Base extends Model
         }
     }
 
+    //分页获取数据
+    public static function getPaginate($where = [], $field = [], $paginate = 1, $orderby = "", $sort = "DESC")
+    {
+        if (empty($field)) {
+            $field = '*';
+        }
+        $model = self::field($field);
+        if (!empty($where)) {
+            $model = $model->where($where);
+        }
+        if (!empty($orderby)) {
+            $model = $model->order($orderby, $sort);
+        }
+        if (is_array($paginate)) {
+            // 自定义分页
+            $res = $model->paginate($paginate['limit'], $paginate['page']);
+        } else {
+            // 默认分页
+            $res = $model->paginate($paginate);
+        }
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return false;
+        }
+    }
+
 }
