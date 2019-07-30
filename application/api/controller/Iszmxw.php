@@ -41,5 +41,6 @@ class Iszmxw
             dump($e);
             Db::rollback();
         }
+        return "添加数据成功";
     }
 }
