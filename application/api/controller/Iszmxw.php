@@ -63,6 +63,6 @@ class Iszmxw
             Db::rollback();
             return "修改数据失败";
         }
-        return "添加数据成功";
+        return "修改数据成功";
     }
 }
