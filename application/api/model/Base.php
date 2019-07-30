@@ -80,7 +80,7 @@ class Base extends Model
         }
         if (is_array($paginate)) {
             // 自定义分页
-            $res = $model->paginate($paginate['limit'], $paginate['page']);
+            $res = $model->paginate($paginate['limit'], true, $paginate['page']);
         } else {
             // 默认分页
             $res = $model->paginate($paginate);
