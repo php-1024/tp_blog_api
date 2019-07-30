@@ -66,7 +66,7 @@ class Base extends Model
     }
 
     //分页获取数据
-    public static function getPaginate($where = [], $field = [], $paginate = 10, $orderby = "", $sort = "DESC")
+    public static function getPaginate($where = [], $field = [], $paginate = 10, $orderby = "id", $sort = "DESC")
     {
         if (empty($field)) {
             $field = '*';
