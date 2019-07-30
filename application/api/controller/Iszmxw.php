@@ -27,6 +27,19 @@ class Iszmxw
 
     public function create(Request $request)
     {
-
+        Db::startTrans();
+        try {
+            Blog::AddData([
+                'sort_id' => 1,
+                'title' => "我是标题",
+                'content' => "我是文章内容",
+                'excerpt' => "摘录",
+                'alias' => "别名"
+            ]);
+            Db::commit();
+        } catch (\Exception $e) {
+            dump($e);
+            Db::rollback();
+        }
     }
 }
