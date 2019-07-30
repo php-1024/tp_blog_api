@@ -78,10 +78,7 @@ class Base extends Model
         if (!empty($orderby)) {
             $model = $model->order($orderby, $sort);
         }
-        if (is_array($paginate)) {
-            // 自定义分页
-            $res = $model->paginate($paginate['limit'], true, $paginate['page']);
-        } else {
+        if (!empty($paginate)) {
             // 默认分页
             $res = $model->paginate($paginate);
         }
