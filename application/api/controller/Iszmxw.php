@@ -34,7 +34,8 @@ class Iszmxw
                 'title' => "我是标题",
                 'content' => "我是文章内容",
                 'excerpt' => "摘录",
-                'alias' => "别名"
+                'alias' => "别名",
+                'author' => "作者"
             ]);
             Db::commit();
         } catch (\Exception $e) {
