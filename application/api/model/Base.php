@@ -128,7 +128,7 @@ class Base extends Model
         if (!empty($res)) {
             return true;
         } else {
-            return false;
+            return $res;
         }
     }
 
