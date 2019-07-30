@@ -112,10 +112,21 @@ class Base extends Model
     // 编辑数据
     public static function EditData($where = [], $data = [])
     {
-        $res = self::update($data,$where);
+        $res = self::update($data, $where);
 
         if (!empty($res)) {
             return self::getOne($where);
+        } else {
+            return false;
+        }
+    }
+
+    //删除数据
+    public static function selected_delete($where, $force = false)
+    {
+        $res = self::where($where)->delete($force);
+        if (!empty($res)) {
+            return true;
         } else {
             return false;
         }

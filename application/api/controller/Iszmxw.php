@@ -65,4 +65,21 @@ class Iszmxw
         }
         return "修改数据成功";
     }
+
+
+    public function delete(Request $request)
+    {
+        Db::startTrans();
+        try {
+            Blog::selected_delete([
+                'id' => 1
+            ]);
+            Db::commit();
+        } catch (\Exception $e) {
+            dump($e);
+            Db::rollback();
+            return "删除失败";
+        }
+        return "删除成功";
+    }
 }
