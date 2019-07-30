@@ -108,4 +108,17 @@ class Base extends Model
         }
     }
 
+
+    // 编辑数据
+    public static function EditData($where = [], $data = [])
+    {
+        $res = self::update($data,$where);
+
+        if (!empty($res)) {
+            return self::getOne($where);
+        } else {
+            return false;
+        }
+    }
+
 }
