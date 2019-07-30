@@ -12,11 +12,15 @@ class Login
     public function login(Request $request)
     {
         $id = $request->get('id');
-        $title = Blog::getValue(['id' => $id],'title');
+        $title = Blog::getValue(['id' => $id], 'title');
         $blog = Blog::getOne(['id' => $id]);
         $list = Blog::getList();
-        dump($title);
-        dump($blog);
+        if (empty($id)) {
+            dump("缺少查询的id");
+        } else {
+            dump($title);
+            dump($blog);
+        }
         dump($list);
     }
 }
