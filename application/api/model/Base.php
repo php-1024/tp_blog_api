@@ -16,7 +16,7 @@ class Base extends Model
     // 定义时间戳字段名
     protected $createTime = 'created_at';
     protected $updateTime = 'updated_at';
-    static $deleteTime = 'deleted_at';
+    protected $deleteTime = 'deleted_at';
 
 
     // 获取单字段数据
