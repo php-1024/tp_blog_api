@@ -11,4 +11,4 @@
 
 use think\Route;
 
-Route::any('/', 'index/hello');
+Route::any('/', 'index/index');
