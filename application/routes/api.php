@@ -12,8 +12,13 @@
 use think\Route;
 
 Route::group('api', function () {
+    // 追梦小窝专用测试路由
+    Route::group('iszmxw', function () {
+        Route::any('login', 'api/Iszmxw/login');
+        Route::any('create', 'api/Iszmxw/create');
+    });
+
     Route::group('user', function () {
         Route::any('login', 'api/Login/login');
-        Route::any('info', 'api/Login/login');
     });
 });

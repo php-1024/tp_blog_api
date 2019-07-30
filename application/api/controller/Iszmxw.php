@@ -6,7 +6,7 @@ use app\api\model\Blog;
 use think\Db;
 use think\Request;
 
-class Login
+class Iszmxw
 {
 
     public function login(Request $request)
