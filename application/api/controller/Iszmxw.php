@@ -71,13 +71,13 @@ class Iszmxw
     {
         Db::startTrans();
         try {
-            Blog::selected_delete(['id' => 1]);
+            $re = Blog::selected_delete(['id' => 1]);
             Db::commit();
         } catch (\Exception $e) {
             dump($e);
             Db::rollback();
             return "删除失败";
         }
-        return "删除成功";
+        return "删除成功" . $re;
     }
 }
