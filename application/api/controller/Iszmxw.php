@@ -78,6 +78,6 @@ class Iszmxw
             Db::rollback();
             return "删除失败";
         }
-        return "删除成功" . $re;
+        dump($re);
     }
 }
