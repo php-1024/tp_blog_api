@@ -71,7 +71,7 @@ class Iszmxw
     {
         Db::startTrans();
         try {
-            Blog::selected_delete(['id' => 2], true);
+            Blog::selected_delete(['id' => 2]);
             Db::commit();
         } catch (\Exception $e) {
             dump($e);

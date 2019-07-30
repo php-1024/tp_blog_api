@@ -122,9 +122,9 @@ class Base extends Model
     }
 
     //删除数据
-    public static function selected_delete($where, $force = false)
+    public static function selected_delete($where, $is_force = false)
     {
-        $res = self::where($where)->delete($force);
+        $res = self::where($where)->delete($is_force);
         if (!empty($res)) {
             return true;
         } else {
