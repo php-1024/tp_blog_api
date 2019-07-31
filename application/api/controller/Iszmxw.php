@@ -5,8 +5,9 @@ namespace app\api\controller;
 use app\api\model\Blog;
 use think\Db;
 use think\Request;
+use think\Controller;
 
-class Iszmxw
+class Iszmxw extends Controller
 {
 
     public function login(Request $request)
