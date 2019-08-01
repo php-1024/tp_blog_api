@@ -10,6 +10,6 @@ class UserCheck
     public function run()
     {
         $request = Request::instance();
-        $request->iszmxw = "我绑定的请求参数";
+        $request->bind('test', '測試參數');
     }
 }
