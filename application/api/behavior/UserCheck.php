@@ -12,5 +12,6 @@ class UserCheck
         $request = Request::instance();
 //        dump($request->param());
         dump($request);
+        return false;
     }
 }
