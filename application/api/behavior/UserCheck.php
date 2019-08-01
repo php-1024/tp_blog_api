@@ -11,6 +11,6 @@ class UserCheck
     {
         $request = Request::instance();
 //        dump($request->param());
-        $request->user = "叶志明";
+        $request->bind('iszmxw', "叶志明");
     }
 }
