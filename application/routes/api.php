@@ -25,4 +25,4 @@ Route::group('api', function () {
     Route::group('user', function () {
         Route::any('login', 'Login/login');
     });
-}, ['before_behavior' => '\app\api\middleware\ApiCheck']);
+}, ['after_behavior' => '\app\api\middleware\ApiCheck']);
