@@ -10,6 +10,6 @@ class UserCheck
     public function run()
     {
         $request = Request::instance();
-        $request->bind('haha', "我绑定的请求参数");
+        $request->bind('haha', '我绑定的请求参数');
     }
 }
