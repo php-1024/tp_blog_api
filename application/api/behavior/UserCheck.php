@@ -10,7 +10,7 @@ class UserCheck
     public function run()
     {
         $request = Request::instance();
-        dump($request->param());
+//        dump($request->param());
         dump($request);
     }
 }
