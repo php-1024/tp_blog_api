@@ -10,6 +10,8 @@ class UserCheck
     public function run()
     {
         $request = Request::instance();
-        $request->bind('caonima', '我绑定的请求参数');
+        $obj = "我绑定的请求参数";
+        $request->bind('caonima', $obj);
+        $request->__set('caibi', '12啊飒飒');
     }
 }
