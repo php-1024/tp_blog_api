@@ -12,6 +12,7 @@ class Iszmxw extends Controller
 
     public function login(Request $request)
     {
+        dump($request->getCache());
         $id = $request->get('id');
         $title = Blog::getValue(['id' => $id], 'title');
         $blog = Blog::getOne(['id' => $id]);
