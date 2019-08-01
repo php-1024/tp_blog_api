@@ -2,10 +2,9 @@
 
 namespace app\api\middleware;
 
-use think\Controller;
 use think\Request;
 
-class ApiCheck extends Controller
+class ApiCheck
 {
     //配置tp5的中间件
     public function run()
