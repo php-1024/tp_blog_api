@@ -18,7 +18,7 @@ Route::group('api', function () {
         Route::any('create', 'api/Iszmxw/create');
         Route::any('delete', 'api/Iszmxw/delete');
         Route::any('edit', 'api/Iszmxw/edit');
-    }, ['after_behavior' => '\app\api\behavior\UserCheck']);
+    }, ['after_behavior' => 'UserCheck']);
 
     Route::group('user', function () {
         Route::any('login', 'api/Login/login');
