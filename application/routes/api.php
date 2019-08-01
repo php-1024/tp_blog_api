@@ -12,6 +12,7 @@
 use think\Route;
 
 Route::bind('api'); // 绑定到api模块下
+
 Route::group('api', function () {
     // 追梦小窝专用测试路由
     Route::group('iszmxw', function () {
@@ -19,7 +20,7 @@ Route::group('api', function () {
         Route::any('create', 'Iszmxw/create');
         Route::any('delete', 'Iszmxw/delete');
         Route::any('edit', 'Iszmxw/edit');
-    }, ['before_behavior' => '\app\api\behavior\ApiCheck']);
+    }, ['before_behavior' => '\app\api\middleware\ApiCheck']);
 
     Route::group('user', function () {
         Route::any('login', 'Login/login');

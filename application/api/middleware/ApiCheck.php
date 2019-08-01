@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\behavior;
+namespace app\api\middleware;
 
 use think\Controller;
 use think\Request;
