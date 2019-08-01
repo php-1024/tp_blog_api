@@ -13,6 +13,5 @@ class ApiCheck extends Controller
         $request = Request::instance();
         $request->bind('test', '測試參數');
         return json(['code' => 50000, 'message' => '对不起您没有权限']);
-
     }
 }
