@@ -11,7 +11,6 @@ class UserCheck
     {
         $request = Request::instance();
 //        dump($request->param());
-        $request->cache('iszmxw');
-        return $request;
+        dump($request);
     }
 }
