@@ -11,7 +11,7 @@ class UserCheck
     {
         $request = Request::instance();
         $obj = "我绑定的请求参数";
-        $request->bind('caonima', $obj);
-        $request->__set('caibi', '12啊飒飒');
+        $request->caonima = $obj;
+        $request->caibi = "12啊飒飒";
     }
 }
