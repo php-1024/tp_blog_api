@@ -13,6 +13,5 @@ class UserCheck
         $obj = "我绑定的请求参数";
         $request->bind('caonima', $obj);
         $request->__set('caibi', '12啊飒飒');
-
     }
 }
