@@ -18,7 +18,7 @@ class Iszmxw extends Controller
         $list = Blog::getList();
         $paginate = Blog::getPaginate([], [], 12, 'id', 'ASC');
         dump($request->param());
-        dump(request()->test);
+        dump($request->__get('test'));
         dump($request);
         if (empty($id)) {
             dump("缺少查询的id");
