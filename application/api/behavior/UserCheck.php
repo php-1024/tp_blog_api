@@ -11,6 +11,6 @@ class UserCheck extends Controller
     public function run()
     {
         $request = Request::instance();
-        dump($request);
+        dump($request->get('a'));
     }
 }
