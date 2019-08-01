@@ -10,7 +10,7 @@ class UserCheck extends Controller
     //配置tp5的中间件
     public function run()
     {
-        $request = Request::destroy();
+        $request = Request::instance();
         dump($request);
     }
 }
