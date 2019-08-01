@@ -11,7 +11,7 @@
 
 use think\Route;
 
-//Route::bind('api', 'namespace');
+Route::bind('api');
 Route::group('api', function () {
     // 追梦小窝专用测试路由
     Route::group('iszmxw', function () {
