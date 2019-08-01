@@ -7,7 +7,7 @@ use think\Request;
 
 class UserCheck
 {
-    //类里面引入jump;类 可以使用跳转的一些方法 还有 success 、error
+    //配置tp5的中间件
     public function run(Request $request)
     {
         dump($request);
