@@ -14,7 +14,7 @@ use think\Route;
 Route::group('api', function () {
     // 追梦小窝专用测试路由
     Route::group('iszmxw', function () {
-        Route::any('login', 'api/Iszmxw/login', ['before_behavior' => '\app\index\behavior\UserCheck']);
+        Route::any('login', 'api/Iszmxw/login', ['before_behavior' => '\app\api\behavior\UserCheck']);
         Route::any('create', 'api/Iszmxw/create');
         Route::any('delete', 'api/Iszmxw/delete');
         Route::any('edit', 'api/Iszmxw/edit');
