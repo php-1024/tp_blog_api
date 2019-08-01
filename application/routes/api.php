@@ -11,6 +11,7 @@
 
 use think\Route;
 
+Route::bind('namespace');
 Route::group('api', function () {
     // 追梦小窝专用测试路由
     Route::group('iszmxw', function () {
@@ -18,7 +19,7 @@ Route::group('api', function () {
         Route::any('create', 'api/Iszmxw/create');
         Route::any('delete', 'api/Iszmxw/delete');
         Route::any('edit', 'api/Iszmxw/edit');
-    }, ['after_behavior' => 'UserCheck']);
+    }, ['after_behavior' => '\app\api\behavior\UserCheck']);
 
     Route::group('user', function () {
         Route::any('login', 'api/Login/login');
