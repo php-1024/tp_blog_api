@@ -11,17 +11,17 @@
 
 use think\Route;
 
-Route::bind('namespace');
+Route::bind('api', 'namespace');
 Route::group('api', function () {
     // 追梦小窝专用测试路由
     Route::group('iszmxw', function () {
-        Route::any('login', 'api/Iszmxw/login');
-        Route::any('create', 'api/Iszmxw/create');
-        Route::any('delete', 'api/Iszmxw/delete');
-        Route::any('edit', 'api/Iszmxw/edit');
+        Route::any('login', 'Iszmxw/login');
+        Route::any('create', 'Iszmxw/create');
+        Route::any('delete', 'Iszmxw/delete');
+        Route::any('edit', 'Iszmxw/edit');
     }, ['after_behavior' => '\app\api\behavior\UserCheck']);
 
     Route::group('user', function () {
-        Route::any('login', 'api/Login/login');
+        Route::any('login', 'Login/login');
     });
 });
