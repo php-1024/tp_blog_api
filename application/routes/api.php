@@ -20,9 +20,9 @@ Route::group('api', function () {
         Route::any('create', 'Iszmxw/create');
         Route::any('delete', 'Iszmxw/delete');
         Route::any('edit', 'Iszmxw/edit');
-    }, ['before_behavior' => '\app\api\middleware\ApiCheck']);
+    });
 
     Route::group('user', function () {
         Route::any('login', 'Login/login');
     });
-});
+}, ['before_behavior' => '\app\api\middleware\ApiCheck']);
