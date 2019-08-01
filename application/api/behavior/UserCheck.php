@@ -12,8 +12,8 @@ class UserCheck extends Controller
     {
         $request = Request::instance();
         $request->bind('test', '測試參數');
-        $this->error('对不起您没有权限');
-//        return ['code' => 50000, 'message' => '对不起您没有权限'];
+//        $this->error('对不起您没有权限');
+        return ['code' => 50000, 'message' => '对不起您没有权限'];
 
     }
 }
