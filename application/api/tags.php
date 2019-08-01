@@ -9,20 +9,22 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-use think\Route;
-
-Route::bind('api'); // 绑定到api模块下
-
-Route::group('api', function () {
-    // 追梦小窝专用测试路由
-    Route::group('iszmxw', function () {
-        Route::any('login', 'Iszmxw/login');
-        Route::any('create', 'Iszmxw/create');
-        Route::any('delete', 'Iszmxw/delete');
-        Route::any('edit', 'Iszmxw/edit');
-    });
-
-    Route::group('user', function () {
-        Route::any('login', 'Login/login');
-    });
-});
+// 应用行为扩展定义文件
+return [
+    // 应用初始化
+    'app_init'     => [],
+    // 应用开始
+    'app_begin'    => [],
+    // 模块初始化
+    'module_init'  => [],
+    // 操作开始执行
+    'action_begin' => [
+        'app\\api\\middleware\\ApiCheck',
+    ],
+    // 视图内容过滤
+    'view_filter'  => [],
+    // 日志写入
+    'log_write'    => [],
+    // 应用结束
+    'app_end'      => [],
+];
