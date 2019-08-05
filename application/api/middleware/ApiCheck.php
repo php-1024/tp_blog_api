@@ -11,7 +11,7 @@ class ApiCheck
     public function run()
     {
         $request = Request::instance();
-        $request->bind('test', '测试');
+        $request->bind('test', 'test');
         return json(['code' => 50000, 'message' => '对不起您没有权限，对不起', 'data' => []]);
     }
 }
