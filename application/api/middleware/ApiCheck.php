@@ -7,7 +7,7 @@ use think\Request;
 
 class ApiCheck
 {
-    //配置tp5的中间件
+    //配置的中间件
     public function run()
     {
         $request = Request::instance();
