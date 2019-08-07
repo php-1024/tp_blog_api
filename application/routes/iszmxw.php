@@ -15,5 +15,5 @@ Route::bind('iszmxw'); // 绑定到api模块下
 
 Route::group('iszmxw', function () {
     // 追梦小窝专用测试路由
-    Route::any('export_excel', 'ExportExcel/export_excel');
+    Route::any('export_excel', 'Export/export_excel');
 });
