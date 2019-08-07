@@ -52,7 +52,7 @@ class ExportExcel extends Controller
 
         //给当前活动的表设置名称
         $objActSheet->setTitle('给当前活动的表设置名称');
-        $excel_name = "追梦小窝的报表";
+        $excel_name = "追梦小窝的报表.xls";
         //生成2003excel格式的xls文件
         header("Content-Type:application/vnd.ms-excel");
         header("Content-Disposition:attachment;filename=$excel_name");
