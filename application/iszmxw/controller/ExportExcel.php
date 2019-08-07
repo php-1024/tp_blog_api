@@ -12,7 +12,7 @@ class ExportExcel extends Controller
 {
 
     // 导出excel方法
-    public function export()
+    public function export_excel(Request $request)
     {
         $list = Facility::where([])->select([
             'id',
