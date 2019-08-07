@@ -26,82 +26,43 @@ class ExportExcel extends Controller
             ])
             ->select()
             ->toArray();
+        $objPHPExcel = new \PHPExcel();
+
+        //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
+        $objPHPExcel
+            ->getProperties()//获得文件属性对象，给下文提供设置资源
+            ->setCreator("追梦小窝")//设置文件的创建者
+            ->setLastModifiedBy("追梦小窝")//设置最后修改者
+            ->setTitle("追梦小窝的excel")//设置标题
+            ->setSubject("Office2007 XLSX Test Document")//设置主题
+            ->setDescription("冯硕需要的数据表格式")//设置备注
+            ->setKeywords("office 2007 openxmlphp")//设置标记
+            ->setCategory("Test resultfile");      //设置类别
+
+        //给表格添加数据
+        $objPHPExcel->setActiveSheetIndex(0)//设置第一个内置表（一个xls文件里可以有多个表）为活动的
+        ->setCellValue('A1', 'Hello')//给表的单元格设置数据
+        ->setCellValue('B2', 'world!')//数据格式可以为字符串
+        ->setCellValue('C1', 12)//数字型
+        ->setCellValue('D2', 12)//
+        ->setCellValue('D3', true)//布尔型
+        ->setCellValue('D4', '=SUM(C1:D2)');//公式
+
+        $objActSheet = $objPHPExcel->getActiveSheet();
+
+        //给当前活动的表设置名称
+        $objActSheet->setTitle('给当前活动的表设置名称');
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('myexchel.xlsx');
+
+        //生成2003excel格式的xls文件
+        header('Content-Type:application/vnd.ms-excel');
+        header('Content-Disposition:attachment;filename="01simple.xls"');
+        header('Cache-Control:max-age=0');
+
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+        exit;
         dump($list);
-    }
-
-    public function login(Request $request)
-    {
-        $id = $request->get('id');
-        $title = Blog::getValue(['id' => $id], 'title');
-        $blog = Blog::getOne(['id' => $id]);
-        $list = Blog::getList();
-        $paginate = Blog::getPaginate([], [], 12, 'id', 'ASC');
-        dump($request->param());
-        dump($request->__get('test'));
-        dump($request);
-        if (empty($id)) {
-            dump("缺少查询的id");
-        } else {
-            dump($title);
-            dump($blog);
-        }
-        dump($paginate);
-    }
-
-    public function create(Request $request)
-    {
-        Db::startTrans();
-        try {
-            Blog::AddData([
-                'sort_id' => 1,
-                'title' => "我是标题",
-                'content' => "我是文章内容",
-                'excerpt' => "摘录",
-                'alias' => "别名"
-            ]);
-            Db::commit();
-        } catch (\Exception $e) {
-            dump($e);
-            Db::rollback();
-        }
-        return "添加数据成功";
-    }
-
-
-    public function edit(Request $request)
-    {
-        Db::startTrans();
-        try {
-            Blog::EditData([
-                'id' => 1
-            ], [
-                'title' => "哈哈成功搞定",
-                'content' => "修改了文章内容",
-                'excerpt' => "编辑摘录",
-                'alias' => "编辑别名"
-            ]);
-            Db::commit();
-        } catch (\Exception $e) {
-            dump($e);
-            Db::rollback();
-            return "修改数据失败";
-        }
-        return "修改数据成功";
-    }
-
-
-    public function delete(Request $request)
-    {
-        $id = $request->get('id');
-        Db::startTrans();
-        try {
-            $re = Blog::selected_delete(['id' => $id], true);
-            Db::commit();
-        } catch (\Exception $e) {
-            dump($e);
-            Db::rollback();
-            return "删除失败";
-        }
-        dump($re);
     }
 }
