@@ -43,56 +43,65 @@ class ExportExcel extends Controller
             'B' => '设备名称',
             'C' => '设备组名称',
             'D' => '屏幕数',
-            'E' => '屏幕',
-            'F' => '屏幕尺寸',
-            'G' => '省份',
-            'H' => '城市',
-            'I' => '区/县',
-            'J' => '详细地址',
-            'K' => 'poi名称',
-            'L' => 'poi地址',
-            'M' => '经度',
-            'N' => '纬度',
-            'O' => '场景',
-            'P' => '是否联网',
-            'Q' => '每日触达人数',
-            'R' => '售卖方式',
-            'S' => '是否可售'
+            'E' => '屏幕1',
+            'F' => '屏幕2',
+            'G' => '屏幕3',
+            'H' => '屏幕4',
+            'I' => '屏幕尺寸',
+            'J' => '省份',
+            'K' => '城市',
+            'L' => '区/县',
+            'M' => '详细地址',
+            'N' => 'poi名称',
+            'O' => 'poi地址',
+            'P' => '经度',
+            'Q' => '纬度',
+            'R' => '场景',
+            'S' => '是否联网',
+            'T' => '每日触达人数',
+            'U' => '售卖方式',
+            'V' => '是否可售'
         ];
+        $export_data = [];
         $excel_data[1] = $excel;
-        dump($list);
-        exit;
+
         foreach ($list as $key => $val) {
-
-            // 计算总额
-            $total_price += $val['bill_money'];
-            // 处理提现银行
-            $bank_name = self::getBankName($val['bank_name']);
-            // 处理提现状态
-            $bill_status = self::checkStatus($val['bill_status']);
-
-            $export_data['A'] = $val['id'];
-            $export_data['B'] = $val['nickname'];
-            $export_data['C'] = $val['bill_money'];
-            $export_data['D'] = $val['pay_type'];
-            $export_data['E'] = $val['account_name'];
-            $export_data['F'] = "\t" . $val['account'] . "\t";
-            $export_data['G'] = $bank_name;
-            $export_data['H'] = $bill_status;
-            $export_data['I'] = date('Y/m/d H:i', $val['add_time']);
-            $export_data['J'] = date('Y/m/d H:i', $val['check_time']);
+            $export_data['A'] = $val['machine_code'];
+            $export_data['B'] = $val['machine_name'];
+            $export_data['C'] = null;
+            $export_data['D'] = 1;
+            $export_data['E'] = 1024;
+            $export_data['F'] = 768;
+            $export_data['G'] = 30.41;
+            $export_data['H'] = 22.81;
+            $export_data['I'] = 15;
+            $export_data['J'] = '省';
+            $export_data['K'] = '市';
+            $export_data['L'] = '区';
+            $export_data['M'] = $val['address'];
+            $export_data['N'] = null;
+            $export_data['O'] = $val['address'];
+            $export_data['P'] = $val['lng'];
+            $export_data['Q'] = $val['lat'];
+            $export_data['R'] = '场景';
+            $export_data['S'] = '是';
+            $export_data['T'] = 750;
+            $export_data['U'] = '是';
+            $export_data['V'] = 'CPM';
             array_push($excel_data, $export_data);
         }
-        //给表格添加数据
-        $objPHPExcel->setActiveSheetIndex(0)//设置第一个内置表（一个xls文件里可以有多个表）为活动的
-        ->setCellValue('A1', '媒体设备ID（必填）')//给表的单元格设置数据
-        ->setCellValue('B1', 'world!')//数据格式可以为字符串
-        ->setCellValue('C1', 12)//数字型
-        ->setCellValue('D1', 12)//
-        ->setCellValue('D3', true)//布尔型
-        ->setCellValue('D4', '=SUM(C1:D2)');//公式
+
+        // 数据输出到表格
+        $set_value = $objPHPExcel->setActiveSheetIndex(0);
+        foreach ($excel_data as $key => $val) { // 注意 key 是从 0 还是 1 开始，此处是 0
+            foreach ($val as $k => $v) {
+                //Excel的第A列，uid是你查出数组的键值，下面以此类推
+                $set_value->setCellValue($k . $key, $val[$k]);
+            }
+        }
 
         $objActSheet = $objPHPExcel->getActiveSheet();
+
 
         //给当前活动的表设置名称
         $objActSheet->setTitle('给当前活动的表设置名称');
