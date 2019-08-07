@@ -14,16 +14,18 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
-        $list = Facility::where([])->field([
-            'id',
-            'machine_code',
-            'machine_name',
-            'address',
-            'lat',
-            'lng',
-            'tag_id',
-        ])
-            ->select();
+        $list = Facility::where([])
+            ->field([
+                'id',
+                'machine_code',
+                'machine_name',
+                'address',
+                'lat',
+                'lng',
+                'tag_id',
+            ])
+            ->select()
+            ->toArray();
         dump($list);
     }
 
