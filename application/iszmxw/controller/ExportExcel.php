@@ -57,7 +57,7 @@ class ExportExcel extends Controller
 
         //生成2003excel格式的xls文件
         header('Content-Type:application/vnd.ms-excel');
-        header('Content-Disposition:attachment;filename="01simple.xls"');
+//        header('Content-Disposition:attachment;filename="01simple.xls"');
         header('Cache-Control:max-age=0');
 
         $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
