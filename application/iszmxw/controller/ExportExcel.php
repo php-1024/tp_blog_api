@@ -55,7 +55,7 @@ class ExportExcel extends Controller
         $excel_name = "追梦小窝的报表";
         //生成2003excel格式的xls文件
         header("Content-Type:application/vnd.ms-excel");
-        header("Content-Disposition:attachment;filename='$excel_name'");
+        header("Content-Disposition:attachment;filename=$excel_name");
         header("Cache-Control:max-age=0");
         $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
