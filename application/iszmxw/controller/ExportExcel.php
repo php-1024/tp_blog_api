@@ -3,7 +3,7 @@
 namespace app\iszmxw\controller;
 
 use app\api\model\Blog;
-use app\api\model\Facility;
+use app\iszmxw\model\Facility;
 use think\Db;
 use think\Request;
 use think\Controller;
@@ -14,7 +14,7 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
-        $list = Facility::where([])->select([
+        $list = Facility::where([])->field([
             'id',
             'machine_code',
             'machine_name',
@@ -22,7 +22,8 @@ class ExportExcel extends Controller
             'lat',
             'lng',
             'tag_id',
-        ]);
+        ])
+            ->select();
         dump($list);
     }
 

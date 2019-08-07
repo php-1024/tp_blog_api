@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\model;
+namespace app\iszmxw\model;
 
 use think\Model;
 
