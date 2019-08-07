@@ -8,7 +8,7 @@ use think\Db;
 use think\Request;
 use think\Controller;
 
-class ExportExcel extends Controller
+class Excel extends Controller
 {
 
     // 导出excel方法
