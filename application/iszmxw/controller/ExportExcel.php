@@ -24,8 +24,7 @@ class ExportExcel extends Controller
                 'lng',
                 'tag_id',
             ])
-            ->select()
-            ->toArray();
+            ->select();
         dump($list);
     }
 
