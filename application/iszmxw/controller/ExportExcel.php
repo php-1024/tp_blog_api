@@ -52,16 +52,14 @@ class ExportExcel extends Controller
 
         //给当前活动的表设置名称
         $objActSheet->setTitle('给当前活动的表设置名称');
-        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('myexchel.xlsx');
-
         //生成2003excel格式的xls文件
         header('Content-Type:application/vnd.ms-excel');
 //        header('Content-Disposition:attachment;filename="01simple.xls"');
         header('Cache-Control:max-age=0');
 
         $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-        $objWriter->save('php://output');
+        $objWriter->save('myexchel.xlsx');
+//        $objWriter->save('php://output');
         exit;
         dump($list);
     }
