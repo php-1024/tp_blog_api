@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller;
+namespace app\iszmxw\controller;
 
 use app\api\model\Blog;
 use app\api\model\Facility;
@@ -8,7 +8,7 @@ use think\Db;
 use think\Request;
 use think\Controller;
 
-class Excel extends Controller
+class ExportExcel extends Controller
 {
 
     // 导出excel方法
