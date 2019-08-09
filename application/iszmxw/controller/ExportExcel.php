@@ -34,6 +34,8 @@ class ExportExcel extends Controller
             ->toArray();
         $objPHPExcel = new \PHPExcel();
 
+        dump($list);
+        exit;
         //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
         $objPHPExcel
             ->getProperties()//获得文件属性对象，给下文提供设置资源
@@ -121,7 +123,6 @@ class ExportExcel extends Controller
         $objWriter->save('php://output');
         Log::info('调试日志');
         exit;
-        dump($list);
     }
 
     // 获取地址
