@@ -4,6 +4,7 @@ namespace app\iszmxw\controller;
 
 use app\api\model\Blog;
 use app\iszmxw\model\Facility;
+use app\iszmxw\model\Province;
 use app\iszmxw\model\ShopSet;
 use think\Db;
 use think\Request;
@@ -121,35 +122,28 @@ class ExportExcel extends Controller
 
     public static function area($shop_id, $type = 1)
     {
+        if (empty($shop_id)) {
+            return "";
+        }
         switch ($type) {
             case 1:
-                $field = 'province_id';
+                $address_id = ShopSet::where('id', $shop_id)->field('province_id')->find();
+                $address = Province::where('id', $address_id)->find('province');
                 break;
             case 2:
-                $field = 'city_id';
+                $address_id = ShopSet::where('id', $shop_id)->field('city_id')->find();
+                $address = Province::where('id', $address_id)->find('city');
                 break;
             case 3:
-                $field = 'area_id';
+                $address_id = ShopSet::where('id', $shop_id)->field('area_id')->find();
+                $address = Province::where('id', $address_id)->find('area');
                 break;
             default:
-                $field = 'province_id';
+                $address_id = ShopSet::where('id', $shop_id)->field('province_id')->find();
+                $address = Province::where('id', $address_id)->find('province');
                 break;
         }
-        $address_id = ShopSet::where('id', $shop_id)->field($field)->find();
-        switch ($type) {
-            case 1:
-                $field = 'province_id';
-                break;
-            case 2:
-                $field = 'city_id';
-                break;
-            case 3:
-                $field = 'area_id';
-                break;
-            default:
-                $field = 'province_id';
-                break;
-        }
+        return $address;
 
     }
 }
