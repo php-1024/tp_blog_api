@@ -19,6 +19,8 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
+        dump($request);
+        exit;
         $list = Facility::where([])
             ->field([
                 'id',
