@@ -129,19 +129,23 @@ class ExportExcel extends Controller
         }
         switch ($type) {
             case 1:
-                $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find()->toArray();
+                $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
+                $re = empty($re) ? array():$re->toArray();
                 $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
                 break;
             case 2:
-                $re = ShopSet::where(['id' => $shop_id])->field('city_id')->find()->toArray();
+                $re = ShopSet::where(['id' => $shop_id])->field('city_id')->find();
+                $re = empty($re) ? array():$re->toArray();
                 $address = City::where(['city_id' => $re['city_id']])->field('name')->find()->toArray();
                 break;
             case 3:
-                $re = ShopSet::where(['id' => $shop_id])->field('area_id')->find()->toArray();
+                $re = ShopSet::where(['id' => $shop_id])->field('area_id')->find();
+                $re = empty($re) ? array():$re->toArray();
                 $address = Area::where(['area_id' => $re['area_id']])->field('name')->find()->toArray();
                 break;
             default:
-                $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find()->toArray();
+                $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
+                $re = empty($re) ? array():$re->toArray();
                 $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
                 break;
         }
