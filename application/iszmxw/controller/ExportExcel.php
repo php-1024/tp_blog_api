@@ -197,9 +197,9 @@ class ExportExcel extends Controller
             $area = Area::where(['area_id' => $re['area_id']])->field('name')->find();
             $area = empty($area) ? array() : $area->toArray();
             $info = [
-                'province' => $province['name'],
-                'city' => $city['name'],
-                'area' => $area['name'],
+                'province' => empty($province) ? '' : $province['name'],
+                'city' => empty($city) ? '' : $city['name'],
+                'area' => empty($area) ? '' : $area['name'],
             ];
         }
         return $info['province'] . $info['city'] . $info['area'] . $address;
