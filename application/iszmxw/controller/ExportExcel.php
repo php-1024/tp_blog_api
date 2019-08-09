@@ -190,11 +190,12 @@ class ExportExcel extends Controller
         if (empty($re['province_id'])) {
             $info = ['province' => '', 'city' => '', 'area' => ''];
         } else {
-            $province = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+            $province = Province::where(['province_id' => $re['province_id']])->field('name')->find();
+            $province = empty($province) ? array() : $province->toArray();
             $city = City::where(['city_id' => $re['city_id']])->field('name')->find();
-            $city = empty($city) ? array() : $re->toArray();
+            $city = empty($city) ? array() : $city->toArray();
             $area = Area::where(['area_id' => $re['area_id']])->field('name')->find();
-            $area = empty($area) ? array() : $re->toArray();
+            $area = empty($area) ? array() : $area->toArray();
             $info = [
                 'province' => $province['name'],
                 'city' => $city['name'],
