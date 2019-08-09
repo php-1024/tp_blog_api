@@ -9,6 +9,7 @@ use app\iszmxw\model\Facility;
 use app\iszmxw\model\Province;
 use app\iszmxw\model\ShopSet;
 use think\Db;
+use think\Log;
 use think\Request;
 use think\Controller;
 
@@ -117,6 +118,7 @@ class ExportExcel extends Controller
         header("Cache-Control:max-age=0");
         $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
+        Log::info('调试日志');
         exit;
         dump($list);
     }
