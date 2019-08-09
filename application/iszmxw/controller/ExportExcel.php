@@ -128,19 +128,19 @@ class ExportExcel extends Controller
         switch ($type) {
             case 1:
                 $address_id = ShopSet::where('id', $shop_id)->field('province_id')->find();
-                $address = Province::where('id', $address_id)->field('province')->find();
+                $address = Province::where('id', $address_id)->field('name')->find();
                 break;
             case 2:
                 $address_id = ShopSet::where('id', $shop_id)->field('city_id')->find();
-                $address = Province::where('id', $address_id)->field('city')->find();
+                $address = Province::where('id', $address_id)->field('name')->find();
                 break;
             case 3:
                 $address_id = ShopSet::where('id', $shop_id)->field('area_id')->find();
-                $address = Province::where('id', $address_id)->field('area')->find();
+                $address = Province::where('id', $address_id)->field('name')->find();
                 break;
             default:
                 $address_id = ShopSet::where('id', $shop_id)->field('province_id')->find();
-                $address = Province::where('id', $address_id)->field('province')->find();
+                $address = Province::where('id', $address_id)->field('name')->find();
                 break;
         }
         return $address;
