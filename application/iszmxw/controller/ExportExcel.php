@@ -264,6 +264,9 @@ class ExportExcel extends Controller
             case "刷单设备";
                 $name = "其他综合";
                 break;
+            case "通用";
+                $name = "其他综合";
+                break;
         }
         return $name;
     }
