@@ -122,7 +122,6 @@ class ExportExcel extends Controller
     }
 
 
-
     // 获取地址
     public static function area($shop_id, $type = 1)
     {
