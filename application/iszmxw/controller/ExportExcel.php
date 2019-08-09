@@ -130,23 +130,39 @@ class ExportExcel extends Controller
         switch ($type) {
             case 1:
                 $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
-                $re = empty($re) ? array():$re->toArray();
-                $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+                $re = empty($re) ? array() : $re->toArray();
+                if ($re['province_id']) {
+                    $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+                } else {
+                    $address = ['name' => ''];
+                }
                 break;
             case 2:
                 $re = ShopSet::where(['id' => $shop_id])->field('city_id')->find();
-                $re = empty($re) ? array():$re->toArray();
-                $address = City::where(['city_id' => $re['city_id']])->field('name')->find()->toArray();
+                $re = empty($re) ? array() : $re->toArray();
+                if ($re['city_id']) {
+                    $address = City::where(['city_id' => $re['city_id']])->field('name')->find()->toArray();
+                } else {
+                    $address = ['name' => ''];
+                }
                 break;
             case 3:
                 $re = ShopSet::where(['id' => $shop_id])->field('area_id')->find();
-                $re = empty($re) ? array():$re->toArray();
-                $address = Area::where(['area_id' => $re['area_id']])->field('name')->find()->toArray();
+                $re = empty($re) ? array() : $re->toArray();
+                if ($re['area_id']) {
+                    $address = Area::where(['area_id' => $re['area_id']])->field('name')->find()->toArray();
+                } else {
+                    $address = ['name' => ''];
+                }
                 break;
             default:
                 $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
-                $re = empty($re) ? array():$re->toArray();
-                $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+                $re = empty($re) ? array() : $re->toArray();
+                if ($re['province_id']) {
+                    $address = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+                } else {
+                    $address = ['name' => ''];
+                }
                 break;
         }
         return $address['name'];
