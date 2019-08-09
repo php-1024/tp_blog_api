@@ -19,7 +19,7 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
-        $list = Facility::where([])
+        $list = Facility::where(['b.name', '<>', '九瓣花工厂店'])
             ->field([
                 'a.id',
                 'a.machine_code',
