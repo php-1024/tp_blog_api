@@ -78,9 +78,9 @@ class ExportExcel extends Controller
             $export_data['G'] = 30.41;
             $export_data['H'] = 22.81;
             $export_data['I'] = 15;
-            $export_data['J'] = '省';
-            $export_data['K'] = '市';
-            $export_data['L'] = '区';
+            $export_data['J'] = self::area($val['shop_id'], 1);
+            $export_data['K'] = self::area($val['shop_id'], 2);
+            $export_data['L'] = self::area($val['shop_id'], 3);
             $export_data['M'] = $val['address'];
             $export_data['N'] = null;
             $export_data['O'] = $val['address'];
