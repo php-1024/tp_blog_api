@@ -3,6 +3,8 @@
 namespace app\iszmxw\controller;
 
 use app\api\model\Blog;
+use app\iszmxw\model\Area;
+use app\iszmxw\model\City;
 use app\iszmxw\model\Facility;
 use app\iszmxw\model\Province;
 use app\iszmxw\model\ShopSet;
@@ -132,11 +134,11 @@ class ExportExcel extends Controller
                 break;
             case 2:
                 $address_id = ShopSet::where(['id' => $shop_id])->field('city_id')->find();
-                $address = Province::where(['city_id' => $address_id])->field('name')->find();
+                $address = City::where(['city_id' => $address_id])->field('name')->find();
                 break;
             case 3:
                 $address_id = ShopSet::where(['id' => $shop_id])->field('area_id')->find();
-                $address = Province::where(['area_id' => $address_id])->field('name')->find();
+                $address = Area::where(['area_id' => $address_id])->field('name')->find();
                 break;
             default:
                 $address_id = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
