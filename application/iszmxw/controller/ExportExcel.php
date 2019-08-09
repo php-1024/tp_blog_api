@@ -21,15 +21,19 @@ class ExportExcel extends Controller
     {
         $list = Facility::where([])
             ->field([
-                'id',
-                'machine_code',
-                'machine_name',
-                'shop_id',
-                'address',
-                'lat',
-                'lng',
-                'tag_id',
+                'a.id',
+                'a.machine_code',
+                'a.machine_name',
+                'a.shop_id',
+                'a.address',
+                'a.lat',
+                'a.lng',
+                'b.type_id',
+                'c.type',
             ])
+            ->alias('a')
+            ->join('shop_set b', 'a.shop_id=b.id', 'left')
+            ->join('shop_type c', 'b.type_id=c.id', 'left')
             ->select()
             ->toArray();
         $objPHPExcel = new \PHPExcel();
@@ -90,7 +94,7 @@ class ExportExcel extends Controller
             $export_data['O'] = self::address($val['shop_id'], $val['address']);
             $export_data['P'] = $val['lng'];
             $export_data['Q'] = $val['lat'];
-            $export_data['R'] = '场景';
+            $export_data['R'] = self::scence($val['type']);
             $export_data['S'] = '是';
             $export_data['T'] = 750;
             $export_data['U'] = '是';
@@ -201,5 +205,12 @@ class ExportExcel extends Controller
             ];
         }
         return $info['province'] . $info['city'] . $info['area'] . $address;
+    }
+
+
+    // 场景处理
+    public static function scence($type)
+    {
+        return $type;
     }
 }
