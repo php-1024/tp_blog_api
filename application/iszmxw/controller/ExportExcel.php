@@ -145,7 +145,7 @@ class ExportExcel extends Controller
                 $address = Province::where(['province_id' => $address_id])->field('name')->find();
                 break;
         }
-        dump($shop_id, $type, $address);
+        dump($shop_id, $type, $address_id, $address);
         exit;
         return $address;
 
