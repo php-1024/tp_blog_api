@@ -4,6 +4,7 @@ namespace app\iszmxw\controller;
 
 use app\api\model\Blog;
 use app\iszmxw\model\Facility;
+use app\iszmxw\model\ShopSet;
 use think\Db;
 use think\Request;
 use think\Controller;
@@ -19,6 +20,7 @@ class ExportExcel extends Controller
                 'id',
                 'machine_code',
                 'machine_name',
+                'shop_id',
                 'address',
                 'lat',
                 'lng',
@@ -114,5 +116,40 @@ class ExportExcel extends Controller
         $objWriter->save('php://output');
         exit;
         dump($list);
+    }
+
+
+    public static function area($shop_id, $type = 1)
+    {
+        switch ($type) {
+            case 1:
+                $field = 'province_id';
+                break;
+            case 2:
+                $field = 'city_id';
+                break;
+            case 3:
+                $field = 'area_id';
+                break;
+            default:
+                $field = 'province_id';
+                break;
+        }
+        $address_id = ShopSet::where('id', $shop_id)->field($field)->find();
+        switch ($type) {
+            case 1:
+                $field = 'province_id';
+                break;
+            case 2:
+                $field = 'city_id';
+                break;
+            case 3:
+                $field = 'area_id';
+                break;
+            default:
+                $field = 'province_id';
+                break;
+        }
+
     }
 }
