@@ -73,7 +73,8 @@ class ExportExcel extends Controller
 
         foreach ($list as $key => $val) {
             $export_data['A'] = $val['machine_code'];
-            $export_data['B'] = $val['machine_name'];
+//            $export_data['B'] = $val['machine_name'];
+            $export_data['B'] = null;
             $export_data['C'] = null;
             $export_data['D'] = 1;
             $export_data['E'] = 1024;
@@ -84,9 +85,9 @@ class ExportExcel extends Controller
             $export_data['J'] = self::area($val['shop_id'], 1);
             $export_data['K'] = self::area($val['shop_id'], 2);
             $export_data['L'] = self::area($val['shop_id'], 3);
-            $export_data['M'] = $val['address'];
-            $export_data['N'] = null;
-            $export_data['O'] = $val['address'];
+            $export_data['M'] = self::address($val['shop_id'], $val['address']);
+            $export_data['N'] = self::area($val['shop_id'], 4);
+            $export_data['O'] = self::address($val['shop_id'], $val['address']);
             $export_data['P'] = $val['lng'];
             $export_data['Q'] = $val['lat'];
             $export_data['R'] = '场景';
@@ -157,6 +158,16 @@ class ExportExcel extends Controller
                     $address = Area::where(['area_id' => $re['area_id']])->field('name')->find()->toArray();
                 }
                 break;
+
+            case 4:
+                $re = ShopSet::where(['id' => $shop_id])->field('name')->find();
+                $re = empty($re) ? array() : $re->toArray();
+                if (empty($re['name'])) {
+                    $address = ['name' => ''];
+                } else {
+                    $address = $re;
+                }
+                break;
             default:
                 $re = ShopSet::where(['id' => $shop_id])->field('province_id')->find();
                 $re = empty($re) ? array() : $re->toArray();
@@ -168,6 +179,26 @@ class ExportExcel extends Controller
                 break;
         }
         return $address['name'];
+    }
 
+
+    // 处理真实地址
+    public static function address($shop_id, $address)
+    {
+        $re = ShopSet::where(['id' => $shop_id])->field(['province_id', 'city_id', 'area_id'])->find();
+        $re = empty($re) ? array() : $re->toArray();
+        if (empty($re['province_id'])) {
+            $info = ['province' => '', 'city' => '', 'area' => ''];
+        } else {
+            $province = Province::where(['province_id' => $re['province_id']])->field('name')->find()->toArray();
+            $city = City::where(['city_id' => $re['city_id']])->field('name')->find()->toArray();
+            $area = Province::where(['area_id' => $re['area_id']])->field('name')->find()->toArray();
+            $info = [
+                'province' => $province['name'],
+                'city' => $city['name'],
+                'area' => $area['name'],
+            ];
+        }
+        return $info['province'] . $info['city'] . $info['area'] . $address;
     }
 }
