@@ -24,10 +24,9 @@ class Tools extends Controller
         foreach ($ip_data as $key => $val) {
             $array[] = explode(" = ", $val);
         }
-
         foreach ($array as $key => $val) {
             $info = $ip2region->btreeSearch($val[0]);
-            echo "IP地址：{$val[0]} 尝试登陆了{$val[1]}次，检测到真实地址为{$info['region']}<br>";
+            echo "IP地址：{$val[0]}                  尝试登陆了{$val[1]}次，检测到真实地址为{$info['region']}<br>";
         }
     }
 }
