@@ -28,6 +28,5 @@ class Tools extends Controller
             $info = $ip2region->btreeSearch($val[0]);
             echo "IP地址：{$val[0]}<br>检测到真实地址为{$info['region']}<br>尝试登陆了{$val[1]}次<br>************************<br><br>";
         }
-
     }
 }
