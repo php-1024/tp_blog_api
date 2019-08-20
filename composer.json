@@ -19,7 +19,8 @@
         "php": ">=5.4.0",
         "topthink/framework": "5.0.*",
         "symfony/var-dumper": "~3.3",
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "zoujingli/ip2region": "^1.0"
     },
     "autoload": {
         "psr-4": {
