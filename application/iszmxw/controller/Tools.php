@@ -19,6 +19,10 @@ class Tools extends Controller
     {
         $ip_data = file_get_contents("ip.txt");
         $ip_data = explode("\n", $ip_data);
-        dump($ip_data);
+        $array = [];
+        foreach ($ip_data as $key => $val) {
+            $array[] = explode(" = ", $val);
+        }
+        dump($array);
     }
 }
