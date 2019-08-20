@@ -302,7 +302,6 @@ class ExportExcel extends Controller
             $export_data['B'] = $list[$key]['address'];
             array_push($excel_data, $export_data);
         }
-
         // 数据输出到表格
         $set_value = $objPHPExcel->setActiveSheetIndex(0);
         foreach ($excel_data as $key => $val) { // 注意 key 是从 0 还是 1 开始，此处是 0
