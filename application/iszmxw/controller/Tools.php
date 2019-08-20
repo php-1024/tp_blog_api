@@ -1,0 +1,23 @@
+<?php
+
+namespace app\iszmxw\controller;
+
+use app\api\model\Blog;
+use app\iszmxw\model\Area;
+use app\iszmxw\model\City;
+use app\iszmxw\model\Facility;
+use app\iszmxw\model\Province;
+use app\iszmxw\model\ShopSet;
+use think\Db;
+use think\Log;
+use think\Request;
+use think\Controller;
+
+class Tools extends Controller
+{
+    public function ip_address()
+    {
+        $ip_data = file_get_contents("ip.txt");
+        dump($ip_data);
+    }
+}
