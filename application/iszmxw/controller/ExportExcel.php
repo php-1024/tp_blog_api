@@ -277,8 +277,56 @@ class ExportExcel extends Controller
     {
         $json_string = file_get_contents('json/excel.json');
         // 用参数true把JSON字符串强制转成PHP数组
-        $data = json_decode($json_string, true);
-        dump($data);
+        $list = json_decode($json_string, true);
+        $objPHPExcel = new \PHPExcel();
+
+        //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
+        $objPHPExcel
+            ->getProperties()//获得文件属性对象，给下文提供设置资源
+            ->setCreator("设备粉丝数据")//设置文件的创建者
+            ->setLastModifiedBy("设备粉丝数据")//设置最后修改者
+            ->setTitle("设备粉丝数据excel")//设置标题
+            ->setSubject("Office2007 XLSX Test Document")//设置主题
+            ->setDescription("设备粉丝数据")//设置备注
+            ->setKeywords("office 2007 openxmlphp")//设置标记
+            ->setCategory("Test resultfile");      //设置类别
+        $excel = [
+            'A' => '设备号',
+            'B' => '位置',
+        ];
+        $export_data = [];
+        $excel_data[1] = $excel;
+
+        foreach ($list as $key => $val) {
+            $export_data['A'] = $key;
+            $export_data['B'] = $val['address'];
+            array_push($excel_data, $export_data);
+        }
+
+        // 数据输出到表格
+        $set_value = $objPHPExcel->setActiveSheetIndex(0);
+        foreach ($excel_data as $key => $val) { // 注意 key 是从 0 还是 1 开始，此处是 0
+            foreach ($val as $k => $v) {
+                //Excel的第A列，uid是你查出数组的键值，下面以此类推
+                $set_value->setCellValue($k . $key, $val[$k]);
+            }
+        }
+
+        $objActSheet = $objPHPExcel->getActiveSheet();
+
+
+        //给当前活动的表设置名称
+        $objActSheet->setTitle('给当前活动的表设置名称');
+        $excel_name = "追梦小窝的报表.xls";
+        //生成2003excel格式的xls文件
+        header("Content-Type:application/vnd.ms-excel");
+        header("Content-Disposition:attachment;filename=$excel_name");
+        header("Cache-Control:max-age=0");
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+        exit;
+
+
     }
 
 }
