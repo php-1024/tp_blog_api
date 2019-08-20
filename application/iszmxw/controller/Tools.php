@@ -18,6 +18,7 @@ class Tools extends Controller
     public function ip_address()
     {
         $ip_data = file_get_contents("ip.txt");
+        $ip_data = str_replace('"""', '', $ip_data);
         dump($ip_data);
     }
 }
