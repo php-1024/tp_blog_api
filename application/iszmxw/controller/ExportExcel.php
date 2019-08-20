@@ -277,7 +277,8 @@ class ExportExcel extends Controller
     {
         $json_string = file_get_contents('json/excel.json');
         // 用参数true把JSON字符串强制转成PHP数组
-        $list = json_decode($json_string, true);
+        $data = json_decode($json_string, true);
+        $list = $data['content'];
         $objPHPExcel = new \PHPExcel();
 
         //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
@@ -303,7 +304,7 @@ class ExportExcel extends Controller
         $export_data = [];
         $excel_data[1] = $excel;
 
-        foreach ($list['content'] as $key => $val) {
+        foreach ($list as $key => $val) {
             $export_data['A'] = $key;
             $export_data['B'] = $list[$key]['address'];
             $export_data['C'] = $list[$key]['day']['08-16'];
