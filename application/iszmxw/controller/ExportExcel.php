@@ -293,15 +293,25 @@ class ExportExcel extends Controller
         $excel = [
             'A' => '设备号',
             'B' => '位置',
+            'C' => '08-16',
+            'D' => '08-17',
+            'E' => '08-18',
+            'F' => '08-19',
+            'G' => '平均数',
+            'H' => '总称重',
         ];
         $export_data = [];
         $excel_data[1] = $excel;
 
-        foreach ($list as $key => $val) {
-            dump($key, $val);
-            exit;
+        foreach ($list['content'] as $key => $val) {
             $export_data['A'] = $key;
             $export_data['B'] = $list[$key]['address'];
+            $export_data['C'] = $list[$key]['day']['08-16'];
+            $export_data['D'] = $list[$key]['day']['08-17'];
+            $export_data['E'] = $list[$key]['day']['08-18'];
+            $export_data['F'] = $list[$key]['day']['08-19'];
+            $export_data['G'] = $list[$key]['avg'];
+            $export_data['H'] = $list[$key]['total'];
             array_push($excel_data, $export_data);
         }
         // 数据输出到表格
