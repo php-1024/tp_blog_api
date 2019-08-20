@@ -299,7 +299,7 @@ class ExportExcel extends Controller
 
         foreach ($list as $key => $val) {
             $export_data['A'] = $key;
-            $export_data['B'] = $val['address'];
+            $export_data['B'] = $list[$key]['address'];
             array_push($excel_data, $export_data);
         }
 
