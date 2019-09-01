@@ -11,4 +11,12 @@
 
 use think\Route;
 
-Route::any('/', 'index/index');
+
+Route::group('iszmxw', function () {
+    // 追梦小窝专用测试路由
+    Route::any('export_excel', 'iszmxw/ExportExcel/export_excel');
+    // json转换为excel
+    Route::any('json_excel', 'iszmxw/ExportExcel/json_excel');
+    // 查看IP地址
+    Route::any('ip_address', 'iszmxw/Login/ip_address');
+});

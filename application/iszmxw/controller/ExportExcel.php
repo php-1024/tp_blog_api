@@ -275,6 +275,7 @@ class ExportExcel extends Controller
     // 将json数据转换为excel
     public function json_excel(Request $request)
     {
+        dump("iszmxw");exit;
         $json_string = file_get_contents('json/excel.json');
         // 用参数true把JSON字符串强制转成PHP数组
         $data = json_decode($json_string, true);
