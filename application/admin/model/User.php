@@ -2,7 +2,7 @@
 
 namespace app\admin\model;
 
-class Blog extends Base
+class User extends Base
 {
 
 }

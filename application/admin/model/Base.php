@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\model;
+namespace app\admin\model;
 
 use think\Model;
 use traits\model\SoftDelete;
