@@ -10,18 +10,18 @@
 // +----------------------------------------------------------------------
 
 return [
-    //数据库配置10万粉正式库
-    'db_config_10wanfen' => [
+    //数据库配置
+    'db_config' => [
         // 数据库类型
         'type'            => 'mysql',
         // 服务器地址
-        'hostname'        => '47.104.184.7',
+        'hostname'        => '118.89.61.124',
         // 数据库名
-        'database'        => '10wanfen',
+        'database'        => 'api_54zm_com',
         // 用户名
-        'username'        => '10wanfen',
+        'username'        => 'api_54zm_com',
         // 密码
-        'password'        => 'hf98410218',
+        'password'        => 'api_54zm_com',
         // 端口
         'hostport'        => '3306',
         // 连接dsn
