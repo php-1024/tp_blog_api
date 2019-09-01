@@ -15,4 +15,6 @@ use think\Route;
 Route::group('admin', function () {
     // 追梦小窝专用测试路由
     Route::any('login', 'admin/Login/login');
-});
+    // 获取登录用户信息
+    Route::any('info', 'admin/Login/info');
+}, ['after_behavior' => '\app\admin\middleware\AdminCheck']);

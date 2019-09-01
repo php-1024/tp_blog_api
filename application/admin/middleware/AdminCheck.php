@@ -1,11 +1,11 @@
 <?php
 
-namespace app\api\middleware;
+namespace app\admin\middleware;
 
 use think\Controller;
 use think\Request;
 
-class ApiCheck
+class AdminCheck
 {
     //配置的中间件
     public function run()
