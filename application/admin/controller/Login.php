@@ -11,6 +11,11 @@ use think\Session;
 
 class Login extends Controller
 {
+    /**
+     * 登录
+     * @param Request $request
+     * @return \think\response\Json
+     */
     public function login(Request $request)
     {
         $data = $request->param();
@@ -35,6 +40,10 @@ class Login extends Controller
     }
 
 
+    /**
+     * 获取用户信息
+     * @param Request $request
+     */
     public function info(Request $request)
     {
         $admin_data = $request->__get('admin_data');
