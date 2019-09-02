@@ -2,7 +2,6 @@
 
 namespace app\admin\middleware;
 
-use think\Controller;
 use think\Request;
 use think\Session;
 
@@ -44,4 +43,5 @@ class AdminCheck
             return json(['code' => 500, 'message' => '请传输token']);
         }
     }
+
 }
