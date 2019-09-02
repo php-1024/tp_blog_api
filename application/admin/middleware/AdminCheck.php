@@ -4,6 +4,7 @@ namespace app\admin\middleware;
 
 use think\Controller;
 use think\Request;
+use think\Session;
 
 class AdminCheck
 {
@@ -11,15 +12,28 @@ class AdminCheck
     public function run()
     {
         $request = Request::instance();
-        $request->bind('test', 'test');
         $route = $request->path();
         switch ($route) {
             case "admin/api/login":
-            case "admin/api/info":
                 break;
             default:
-                return json(['code' => 50000, 'message' => '对不起您没有权限，对不起', 'data' => []]);
+                return self::LoginCheck($request);
                 break;
+        }
+    }
+
+
+    public static function LoginCheck(Request $request)
+    {
+        $param = $request->param();
+        if (isset($param['token'])) {
+            $admin_data = Session::get($param['token']);
+            if (empty($admin_data)) {
+                return json(['code' => 500, 'message' => '登录过期，请您重新登录！']);
+            }
+            $request->bind('admin_data', $admin_data);
+        } else {
+            return json(['code' => 500, 'message' => '请传输token']);
         }
     }
 }

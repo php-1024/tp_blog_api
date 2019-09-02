@@ -23,8 +23,9 @@ class Login extends Controller
         $res = User::getOne(['username' => $data['username']]);
         if ($res) {
             if ($res['password'] === md5($data['password'])) {
-                Session::set('admin_data',$res);
-                return json(['code' => 200, 'message' => '恭喜您登录成功！']);
+                $token = md5(time() . rand(1000, 9999));
+                Session::set($token, $res);
+                return json(['code' => 200, 'message' => '恭喜您登录成功！', 'token' => $token]);
             } else {
                 return json(['code' => 500, 'message' => '密码不正确请您核对后再试']);
             }
@@ -36,7 +37,7 @@ class Login extends Controller
 
     public function info(Request $request)
     {
-        $admin_data = Session::get('admin_data');
+        $admin_data = $request->__get('admin_data');
         dump($admin_data);
     }
 }
