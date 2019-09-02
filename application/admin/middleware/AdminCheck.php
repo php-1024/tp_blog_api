@@ -8,7 +8,10 @@ use think\Session;
 
 class AdminCheck
 {
-    //配置的中间件
+    /**
+     * 配置的中间件
+     * @return \think\response\Json
+     */
     public function run()
     {
         $request = Request::instance();
@@ -23,6 +26,11 @@ class AdminCheck
     }
 
 
+    /**
+     * 登录检测
+     * @param Request $request
+     * @return \think\response\Json
+     */
     public static function LoginCheck(Request $request)
     {
         $param = $request->param();
