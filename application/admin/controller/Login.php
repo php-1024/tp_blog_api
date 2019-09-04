@@ -2,7 +2,9 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\LoginLog;
 use app\admin\model\User;
+use app\common\Tooling;
 use think\Cache;
 use think\Db;
 use think\Log;
@@ -25,11 +27,23 @@ class Login extends Controller
         if (empty($data['password'])) {
             return json(['code' => 500, 'message' => '请输入密码！']);
         }
+        $ip = $request->ip();
+        $address = Tooling::address($ip);
+        if ($address === false) {
+            $address['location'] = "本地开发登录";
+        }
         $res = User::getOne(['username' => $data['username']]);
         if ($res) {
             if ($res['password'] === md5($data['password'])) {
                 $token = md5(time() . rand(1000, 9999));
                 Cache::set($token, $res);
+                LoginLog::AddData([
+                    'user_id' => $res['id'],
+                    'username' => $res['username'],
+                    'role' => $res['role'],
+                    'ip' => $ip,
+                    'address' => $address['location'],
+                ]);
                 return json(['code' => 200, 'message' => '恭喜您登录成功！', 'data' => ['token' => $token]]);
             } else {
                 return json(['code' => 500, 'message' => '密码不正确请您核对后再试']);

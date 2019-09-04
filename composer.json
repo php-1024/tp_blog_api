@@ -20,7 +20,8 @@
     "topthink/framework": "5.0.*",
     "symfony/var-dumper": "~3.3",
     "phpoffice/phpexcel": "^1.8",
-    "zoujingli/ip2region": "^1.0"
+    "zoujingli/ip2region": "^1.0",
+    "guzzlehttp/guzzle": "^6.3"
   },
   "autoload": {
     "psr-4": {
