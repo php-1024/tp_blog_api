@@ -163,6 +163,7 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import { getData } from '@/api/dashboard'
 
 export default {
   components: {
@@ -232,7 +233,15 @@ export default {
       }]
     }
   },
+  mounted() {
+    this.getData()
+  },
   methods: {
+    getData() {
+      getData().then(res=>{
+        console.log(res);
+      })
+    }
   }
 }
 </script>

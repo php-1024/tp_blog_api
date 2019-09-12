@@ -33,9 +33,11 @@ class AdminCheck
      */
     public static function LoginCheck(Request $request)
     {
-        $param = $request->param();
-        if (isset($param['token'])) {
-            $admin_data = Cache::get($param['token']);
+        $token = $request->param('token');
+        $AdminToken = $request->header('Admin-Token');
+        $token = empty($token) ? $AdminToken : $token;
+        if (isset($token)) {
+            $admin_data = Cache::get($token);
             if (empty($admin_data)) {
                 return json(['code' => 500, 'message' => '登录过期，请您重新登录！']);
             }

@@ -17,9 +17,9 @@ service.interceptors.request.use(
 
     if (store.getters.token) {
       // 让每个请求携带令牌
-      // ['Open-Token'] 是自定义标头密钥
+      // ['Admin-Token'] 是自定义标头密钥
       // 请根据实际情况进行修改
-      config.headers['Open-Token'] = getToken()
+      config.headers['Admin-Token'] = getToken()
     }
     return config
   },
