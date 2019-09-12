@@ -23,8 +23,8 @@
             </div>
             <count-to
               :start-val="0"
-              :end-val="102400"
-              :duration="2600"
+              :end-val="blog_num"
+              :duration="5000"
               class="card-panel-num"
             />
           </div>
@@ -49,8 +49,8 @@
             </div>
             <count-to
               :start-val="0"
-              :end-val="81212"
-              :duration="3000"
+              :end-val="comment_num"
+              :duration="5000"
               class="card-panel-num"
             />
           </div>
@@ -75,8 +75,8 @@
             </div>
             <count-to
               :start-val="0"
-              :end-val="9280"
-              :duration="3200"
+              :end-val="twitter_num"
+              :duration="5000"
               class="card-panel-num"
             />
           </div>
@@ -115,7 +115,7 @@
         :lg="12"
       >
         <el-table
-          :data="list"
+          :data="login_log"
           style="width: 100%;padding-top: 15px;"
         >
           <el-table-column
@@ -171,66 +171,10 @@ export default {
   },
   data() {
     return {
-      list: [{
-        id: 1,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 2,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 3,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 4,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 5,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 6,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 7,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 8,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 9,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      },
-      {
-        id: 10,
-        ip: '192.168.1.1',
-        address: '广东省深圳市',
-        created_at: '2109年08月05日'
-      }]
+      blog_num: 0,
+      comment_num: 0,
+      twitter_num: 0,
+      login_log: []
     }
   },
   mounted() {
@@ -239,7 +183,12 @@ export default {
   methods: {
     getData() {
       getData().then(res=>{
-        console.log(res);
+        if (res.code === 200) {
+          this.blog_num = res.data.blog_num
+          this.comment_num = res.data.comment_num
+          this.twitter_num = res.data.twitter_num
+          this.login_log = res.data.login_log
+        }
       })
     }
   }
