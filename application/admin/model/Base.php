@@ -25,6 +25,12 @@ class Base extends Model
         return self::where($where)->value($value);
     }
 
+    // 获取单字段数据
+    public static function getCount($where, $value)
+    {
+        return self::where($where)->count($value);
+    }
+
     // 获取单组数据
     public static function getOne($where = [], $field = [], $orderby = "id", $sort = 'DESC')
     {

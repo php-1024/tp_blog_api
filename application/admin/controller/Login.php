@@ -62,7 +62,8 @@ class Login extends Controller
     public function info(Request $request)
     {
         $admin_data = $request->__get('admin_data');
-        $admin_data['avatar'] = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
+        $domain = $request->domain();
+        $admin_data['avatar'] = $domain."/static/images/user.gif";
         unset($admin_data['password']);
         return json(['code' => 200, 'message' => '获取用户信息成功！', 'data' => $admin_data]);
     }
