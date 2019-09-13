@@ -31,4 +31,26 @@ class System extends Controller
             'footer_info' => $footer_info,
         ]]);
     }
+
+
+    /**
+     * 保存修改
+     * @param Request $request
+     * @return \think\response\Json
+     */
+    public function save_config(Request $request)
+    {
+        $param = $request->param();
+        Db::startTrans();
+        try {
+            foreach ($param as $key => $val) {
+                Options::SaveOption($key, $val);
+            }
+            Db::commit();
+            return json(['code' => 200, 'message' => '操作成功！']);
+        } catch (\Exception $e) {
+            Db::rollback();
+            return json(['code' => 500, 'message' => '操作失败请稍后再试！']);
+        }
+    }
 }

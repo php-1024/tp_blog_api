@@ -16,4 +16,10 @@ class Options extends Base
     {
         return self::where(['option_name' => $option_name])->value('option_value');
     }
+
+    // 更改配置
+    public static function SaveOption($option_name, $value)
+    {
+        return self::update(['option_value' => $value], ['option_name' => $option_name]);
+    }
 }

@@ -7,3 +7,11 @@ export function config(params) {
     params
   })
 }
+
+export function save_config(params) {
+  return request({
+    url: '/system/save_config',
+    method: 'post',
+    params
+  })
+}

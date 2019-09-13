@@ -28,6 +28,8 @@ Route::group('admin', function () {
         Route::group('system', function () {
             // 系统设置
             Route::any('config', 'admin/System/config');
+            // 系统设置
+            Route::any('save_config', 'admin/System/save_config');
         });
     });
 }, ['after_behavior' => '\app\admin\middleware\AdminCheck']);

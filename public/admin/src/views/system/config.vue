@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { config } from '@/api/system'
+import { config, save_config } from '@/api/system'
 
 export default {
   data() {
@@ -55,14 +55,15 @@ export default {
   methods: {
     getData() {
       config().then(res => {
-        console.log(res)
         if (res.code === 200) {
           this.form = res.data
         }
       })
     },
     onSubmit() {
-      console.log('submit!')
+      save_config(this.form).then(res => {
+        console.log(res)
+      })
     }
   }
 }
