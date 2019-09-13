@@ -182,7 +182,7 @@ export default {
   },
   methods: {
     getData() {
-      getData().then(res=>{
+      getData().then(res => {
         if (res.code === 200) {
           this.blog_num = res.data.blog_num
           this.comment_num = res.data.comment_num
