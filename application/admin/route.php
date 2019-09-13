@@ -18,7 +18,16 @@ Route::group('admin', function () {
         Route::any('login', 'admin/Login/login');
         // 获取登录用户信息
         Route::any('info', 'admin/Login/info');
-        // 获取登录用户信息
-        Route::any('dashboard/index', 'admin/Dashboard/index');
+
+        // 系统首页
+        Route::group('dashboard', function () {
+            Route::any('index', 'admin/Dashboard/index');
+        });
+
+        // 系统管理
+        Route::group('system', function () {
+            // 系统设置
+            Route::any('config', 'admin/System/config');
+        });
     });
 }, ['after_behavior' => '\app\admin\middleware\AdminCheck']);
