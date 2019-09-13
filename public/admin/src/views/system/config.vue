@@ -62,7 +62,13 @@ export default {
     },
     onSubmit() {
       save_config(this.form).then(res => {
-        console.log(res)
+        if (res.code === 200) {
+          this.$notify({
+            title: '提示',
+            message: res.message,
+            type: 'success'
+          })
+        }
       })
     }
   }
