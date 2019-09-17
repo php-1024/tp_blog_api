@@ -55,6 +55,21 @@ class Login extends Controller
 
 
     /**
+     * 退出登录
+     * @param Request $request
+     * @return array
+     */
+    public function logout(Request $request)
+    {
+        $token = $request->param('token');
+        $AdminToken = $request->header('Admin-Token');
+        $token = empty($token) ? $AdminToken : $token;
+        Cache::rm($token);
+        return json(['code' => 200, 'message' => '操作成功']);
+    }
+
+
+    /**
      * 获取用户信息
      * @param Request $request
      * @return \think\response\Json
@@ -63,7 +78,7 @@ class Login extends Controller
     {
         $admin_data = $request->__get('admin_data');
         $domain = $request->domain();
-        $admin_data['avatar'] = $domain."/static/images/user.gif";
+        $admin_data['avatar'] = $domain . "/static/images/user.gif";
         unset($admin_data['password']);
         return json(['code' => 200, 'message' => '获取用户信息成功！', 'data' => $admin_data]);
     }

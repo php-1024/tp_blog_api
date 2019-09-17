@@ -14,8 +14,10 @@ use think\Route;
 
 Route::group('admin', function () {
     Route::group('api', function () {
-        // 追梦小窝专用测试路由
+        // 登录
         Route::any('login', 'admin/Login/login');
+        // 登录
+        Route::any('logout', 'admin/Login/logout');
         // 获取登录用户信息
         Route::any('info', 'admin/Login/info');
 
