@@ -97,16 +97,15 @@
             <span>系统信息</span>
           </div>
           <div>
-            <span>操作系统： Linux</span>
+            <span>操作系统： {{ system }}</span>
             <el-divider />
-            <span>PHP版本：7.2</span>
+            <span>PHP版本：{{ php }}</span>
             <el-divider />
-            <span>服务器域名/IP：127.0.0.1</span>
-            <span>PHP版本：7.2</span>
+            <span>服务器环境：{{ serve }}</span>
             <el-divider />
-            <span>服务器环境：nginx/1.12.2</span>
+            <span>服务器域名/IP：{{ serve_name }}</span>
             <el-divider />
-            <span>程序版本：ThinkPHP5.0</span>
+            <span>程序版本：ThinkPHP{{ tp_version }}</span>
           </div>
         </el-card>
       </el-col>
@@ -174,6 +173,11 @@ export default {
       blog_num: 0,
       comment_num: 0,
       twitter_num: 0,
+      system: null,
+      php: null,
+      serve: null,
+      serve_name: null,
+      tp_version: null,
       login_log: []
     }
   },
@@ -187,6 +191,11 @@ export default {
           this.blog_num = res.data.blog_num
           this.comment_num = res.data.comment_num
           this.twitter_num = res.data.twitter_num
+          this.system = res.data.system
+          this.php = res.data.php
+          this.serve = res.data.serve
+          this.serve_name = res.data.serve_name
+          this.tp_version = res.data.tp_version
           this.login_log = res.data.login_log
         }
       })
