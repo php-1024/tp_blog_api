@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\Options;
+use app\admin\model\ViewLog;
 use think\Db;
 use think\Log;
 use think\Request;
@@ -52,5 +53,17 @@ class System extends Controller
             Db::rollback();
             return json(['code' => 500, 'message' => '操作失败请稍后再试！']);
         }
+    }
+
+
+    /**
+     * 访客记录
+     * @param Request $request
+     * @return \think\response\Json
+     */
+    public function view_log(Request $request)
+    {
+        $view_log = ViewLog::getPaginate();
+        return json(['code' => 200, 'message' => 'ok', 'data' => $view_log]);
     }
 }

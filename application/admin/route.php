@@ -32,6 +32,8 @@ Route::group('admin', function () {
             Route::any('config', 'admin/System/config');
             // 系统设置
             Route::any('save_config', 'admin/System/save_config');
+            // 访客记录
+            Route::any('view_log', 'admin/System/view_log');
         });
     });
 }, ['after_behavior' => '\app\admin\middleware\AdminCheck']);

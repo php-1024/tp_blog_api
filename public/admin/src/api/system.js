@@ -15,3 +15,11 @@ export function save_config(params) {
     params
   })
 }
+
+export function view_log(params) {
+  return request({
+    url: '/system/view_log',
+    method: 'post',
+    params
+  })
+}
