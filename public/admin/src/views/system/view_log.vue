@@ -44,9 +44,7 @@
         </el-table-column>
         <el-table-column label="来源地址">
           <template slot-scope="scope">
-            <el-tag>
-              {{ scope.row.previous }}
-            </el-tag>
+            <el-link :href="scope.row.previous" target="_blank" type="primary">{{ scope.row.previous }}</el-link>
           </template>
         </el-table-column>
         <el-table-column label="最后访问时间">
@@ -58,9 +56,7 @@
         </el-table-column>
         <el-table-column label="最后访问地址">
           <template slot-scope="scope">
-            <el-tag>
-              {{ scope.row.full }}
-            </el-tag>
+            <el-link :href="scope.row.full" target="_blank" type="primary">{{ scope.row.full }}</el-link>
           </template>
         </el-table-column>
       </el-table>

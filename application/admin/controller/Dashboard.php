@@ -20,8 +20,7 @@ class Dashboard extends Controller
      */
     public function index(Request $request)
     {
-        $admin_data = $request->__get('admin_data');
-        $login_log = LoginLog::getList([], [], 10, 'id', 'DESC');
+        $login_log = LoginLog::getPaginate([], [], 10, 'id', 'DESC');
         $blog_num = Blog::getCount([], 'id');
         $comment_num = Comment::getCount([], 'id');
         $twitter_num = Twitter::getCount([], 'id');

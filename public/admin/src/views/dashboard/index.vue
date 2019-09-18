@@ -89,30 +89,6 @@
         style="padding-right:8px;margin-bottom:30px;"
         :lg="12"
       >
-        <el-card class="box-card">
-          <div
-            slot="header"
-            class="clearfix"
-          >
-            <span>系统信息</span>
-          </div>
-          <div>
-            <span>操作系统： {{ system }}</span>
-            <el-divider />
-            <span>PHP版本：{{ php }}</span>
-            <el-divider />
-            <span>服务器环境：{{ serve }}</span>
-            <el-divider />
-            <span>服务器域名/IP：{{ serve_name }}</span>
-            <el-divider />
-            <span>程序版本：ThinkPHP{{ tp_version }}</span>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col
-        style="padding-right:8px;margin-bottom:30px;"
-        :lg="12"
-      >
         <el-table
           :data="login_log"
           style="width: 100%;padding-top: 15px;"
@@ -154,6 +130,39 @@
             </template>
           </el-table-column>
         </el-table>
+        <!-- 分页 -->
+        <pagination
+          v-show="total>0"
+          :total="total"
+          :page.sync="listQuery.page"
+          :limit.sync="listQuery.limit"
+          @pagination="getData"
+        />
+      </el-col>
+
+      <el-col
+        style="padding-right:8px;margin-bottom:30px;"
+        :lg="12"
+      >
+        <el-card class="box-card">
+          <div
+            slot="header"
+            class="clearfix"
+          >
+            <span>系统信息</span>
+          </div>
+          <div>
+            <span>操作系统： {{ system }}</span>
+            <el-divider />
+            <span>PHP版本：{{ php }}</span>
+            <el-divider />
+            <span>服务器环境：{{ serve }}</span>
+            <el-divider />
+            <span>服务器域名/IP：{{ serve_name }}</span>
+            <el-divider />
+            <span>程序版本：ThinkPHP{{ tp_version }}</span>
+          </div>
+        </el-card>
       </el-col>
     </el-row>
 
@@ -163,13 +172,20 @@
 <script>
 import CountTo from 'vue-count-to'
 import { getData } from '@/api/dashboard'
+import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 export default {
   components: {
-    CountTo
+    CountTo,
+    Pagination
   },
   data() {
     return {
+      total: 0,
+      listQuery: {
+        page: 1,
+        limit: 10
+      },
       blog_num: 0,
       comment_num: 0,
       twitter_num: 0,
@@ -186,7 +202,7 @@ export default {
   },
   methods: {
     getData() {
-      getData().then(res => {
+      getData(this.listQuery).then(res => {
         if (res.code === 200) {
           this.blog_num = res.data.blog_num
           this.comment_num = res.data.comment_num
@@ -196,7 +212,8 @@ export default {
           this.serve = res.data.serve
           this.serve_name = res.data.serve_name
           this.tp_version = res.data.tp_version
-          this.login_log = res.data.login_log
+          this.login_log = res.data.login_log.data
+          this.total = res.data.login_log.total
         }
       })
     }
