@@ -1,7 +1,10 @@
 <template>
   <div class="main">
     <el-card class="box-card">
-      <div slot="header" class="clearfix">
+      <div
+        slot="header"
+        class="clearfix"
+      >
         <span>栏目列表</span>
       </div>
       <el-table :data="tableData">
@@ -11,8 +14,15 @@
         />
         <el-table-column label="序号">
           <template slot-scope="scope">
-            <el-input v-model="scope.row.sort" placeholder="排序" style="width:120px">
-              <el-button slot="append" icon="el-icon-sort" />
+            <el-input
+              v-model="scope.row.sort"
+              placeholder="排序"
+              style="width:120px"
+            >
+              <el-button
+                slot="append"
+                icon="el-icon-sort"
+              />
             </el-input>
           </template>
         </el-table-column>
@@ -54,6 +64,7 @@
 </template>
 
 <script>
+import { getCategory } from '@/api/category'
 export default {
   data() {
     return {
@@ -65,6 +76,16 @@ export default {
         rename: 'suibi',
         articles: 35
       }]
+    }
+  },
+  mounted() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      getCategory().then(res => {
+        console.log(res)
+      })
     }
   }
 }

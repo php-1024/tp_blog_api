@@ -35,5 +35,13 @@ Route::group('admin', function () {
             // 访客记录
             Route::any('view_log', 'admin/System/view_log');
         });
+
+        // 栏目管理
+        Route::group('category', function () {
+            // 栏目分类列表
+            Route::any('category_list', 'admin/Category/category_list');
+            // 首页导航栏列表
+            Route::any('navbar_list', 'admin/Category/navbar_list');
+        });
     });
 }, ['after_behavior' => '\app\admin\middleware\AdminCheck']);
