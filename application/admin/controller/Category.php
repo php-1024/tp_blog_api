@@ -2,13 +2,7 @@
 
 namespace app\admin\controller;
 
-use app\admin\model\Blog;
-use app\admin\model\Comment;
-use app\admin\model\LoginLog;
 use app\admin\model\Sort;
-use app\admin\model\Twitter;
-use think\Db;
-use think\Log;
 use think\Request;
 use think\Controller;
 
