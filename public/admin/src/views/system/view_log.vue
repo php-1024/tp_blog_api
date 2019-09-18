@@ -64,22 +64,33 @@
           </template>
         </el-table-column>
       </el-table>
+      <!-- 分页 -->
+      <pagination
+        v-show="total>0"
+        :total="total"
+        :page.sync="listQuery.page"
+        :limit.sync="listQuery.limit"
+        @pagination="getData"
+      />
     </el-card>
   </div>
 </template>
 
 <script>
 import { view_log } from '@/api/system'
+import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 export default {
+  components: {
+    Pagination
+  },
   data() {
     return {
-      tableData: [{
-        id: 1,
-        ip: '192.168.1.1',
-        address: '广东省深圳市 电信',
-        views: 20,
-        date: '2016-05-02'
-      }]
+      total: 0,
+      listQuery: {
+        page: 1,
+        limit: 10
+      },
+      tableData: []
     }
   },
   mounted() {
@@ -87,8 +98,9 @@ export default {
   },
   methods: {
     getData() {
-      view_log().then(res => {
+      view_log(this.listQuery).then(res => {
         if (res.code === 200) {
+          this.total = res.data.total
           this.tableData = res.data.data
         }
       })

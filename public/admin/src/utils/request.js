@@ -26,6 +26,12 @@ service.interceptors.request.use(
   error => {
     // 做一些请求错误
     console.log(error) // for debug
+    Message({
+      // message: error.message,
+      message: '请求数据失败，请确认您的网络正常！',
+      type: 'error',
+      duration: 5 * 1000
+    })
     return Promise.reject(error)
   }
 )
