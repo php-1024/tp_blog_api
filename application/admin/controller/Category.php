@@ -22,7 +22,7 @@ class Category extends Controller
      */
     public function category_list(Request $request)
     {
-        $category_list = Sort::field('sort.*,count(blog.sort_id) count')->join('blog', 'blog.sort_id = sort.id', 'LEFT')->where([])->group('sort.id')->paginate(10)->toArray();
+        $category_list = Sort::getPaginate();
         return json(['code' => 200, 'message' => 'ok', 'data' => $category_list]);
     }
 }
