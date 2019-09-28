@@ -18,7 +18,7 @@ class Article extends Controller
     {
         $article_list = Blog::getPaginate([], ['id', 'sort_id', 'title', 'views', 'created_at'], 10, 'id', 'DESC');
         foreach ($article_list as $key => $val) {
-            $val['sore_name'] = Sort::getValue(['id' => $val['sore_id']], 'name');
+            $article_list[$key]['sore_name'] = Sort::getValue(['id' => $val['sore_id']], 'name');
         }
         return json(['code' => 200, 'message' => 'ok', 'data' => $article_list]);
     }
