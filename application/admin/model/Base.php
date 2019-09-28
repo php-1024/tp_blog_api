@@ -25,7 +25,7 @@ class Base extends Model
         return self::where($where)->value($value);
     }
 
-    // 获取单字段数据
+    // 计算总数
     public static function getCount($where, $value)
     {
         return self::where($where)->count($value);
