@@ -43,5 +43,11 @@ Route::group('admin', function () {
             // 首页导航栏列表
             Route::any('navbar_list', 'admin/Category/navbar_list');
         });
+
+        // 文章管理
+        Route::group('article', function () {
+            // 文章列表
+            Route::any('article_list', 'admin/Article/article_list');
+        });
     });
 }, ['after_behavior' => '\app\admin\middleware\AdminCheck']);
