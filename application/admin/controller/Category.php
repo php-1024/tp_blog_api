@@ -9,6 +9,7 @@ use think\Controller;
 
 class Category extends Controller
 {
+
     /**
      * 栏目分类列表
      * @param Request $request
