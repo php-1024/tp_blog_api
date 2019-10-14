@@ -40,6 +40,8 @@ Route::group('admin', function () {
         Route::group('category', function () {
             // 栏目分类列表
             Route::any('category_list', 'admin/Category/category_list');
+            // 添加栏目
+            Route::any('category_add', 'admin/Category/category_add');
             // 首页导航栏列表
             Route::any('navbar_list', 'admin/Category/navbar_list');
         });
