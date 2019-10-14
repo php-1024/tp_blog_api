@@ -17,6 +17,8 @@ class Login extends Controller
      * 登录
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function login(Request $request)
     {
@@ -57,7 +59,9 @@ class Login extends Controller
     /**
      * 退出登录
      * @param Request $request
-     * @return array
+     * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function logout(Request $request)
     {
@@ -73,6 +77,8 @@ class Login extends Controller
      * 获取用户信息
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function info(Request $request)
     {

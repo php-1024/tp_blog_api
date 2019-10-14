@@ -13,6 +13,8 @@ class Article extends Controller
      * 文章列表
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:00
      */
     public function article_list(Request $request)
     {

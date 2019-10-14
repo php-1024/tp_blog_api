@@ -17,6 +17,8 @@ class Dashboard extends Controller
      * 首页信息
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:00
      */
     public function index(Request $request)
     {

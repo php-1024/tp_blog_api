@@ -15,6 +15,8 @@ class System extends Controller
      * 系统设置
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function config(Request $request)
     {
@@ -38,6 +40,8 @@ class System extends Controller
      * 保存修改
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function save_config(Request $request)
     {
@@ -60,6 +64,8 @@ class System extends Controller
      * 访客记录
      * @param Request $request
      * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/14 21:01
      */
     public function view_log(Request $request)
     {
