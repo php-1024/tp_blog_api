@@ -21,9 +21,9 @@ class Category extends Controller
      */
     public function category_list(Request $request)
     {
-        $category_list = Sort::getPaginate();
-        foreach ($category_list['data'] as $key => $val) {
-            $category_list['data'][$key]['article_num'] = Blog::getCount(['sort_id' => $val['id']], 'id');
+        $category_list = Sort::getList([], [], 0, 'id', 'DESC');
+        foreach ($category_list as $key => $val) {
+            $category_list[$key]['article_num'] = Blog::getCount(['sort_id' => $val['id']], 'id');
         }
         return json(['code' => 200, 'message' => 'ok', 'data' => $category_list]);
     }
