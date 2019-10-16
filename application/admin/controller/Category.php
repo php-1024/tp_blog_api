@@ -37,15 +37,11 @@ class Category extends Controller
      */
     public function category_add(Request $request)
     {
-        $data = $request->param();
-        if (empty($data['name'])) {
-            return json(['code' => 500, 'message' => '请输入栏目名称']);
-        }
-        if (empty($data['description'])) {
-            return json(['code' => 500, 'message' => '请输入描述一下该栏目']);
-        }
-        if (empty($data['alias'])) {
-            return json(['code' => 500, 'message' => '请输入栏目别名']);
+        $data   = $request->param();
+        $result = $this->validate($data, 'Category');
+        if (true !== $result) {
+            // 验证失败 输出错误信息
+            return json(['code' => 500, 'message' => $result]);
         }
         Db::startTrans();
         try {
@@ -55,6 +51,17 @@ class Category extends Controller
         } catch (\Exception $e) {
             Db::rollback();
             return json(['code' => 500, 'message' => '添加栏目失败，请稍后再试！']);
+        }
+    }
+
+
+    public function category_edit(Request $request)
+    {
+        $data   = $request->param();
+        $result = $this->validate($data, 'Category');
+        if (true !== $result) {
+            // 验证失败 输出错误信息
+            return json(['code' => 500, 'message' => $result]);
         }
     }
 }
