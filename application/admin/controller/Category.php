@@ -57,6 +57,28 @@ class Category extends Controller
 
 
     /**
+     * 删除栏目
+     * @param Request $request
+     * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/17 19:49
+     */
+    public function category_delete(Request $request)
+    {
+        $data = $request->param();
+        Db::startTrans();
+        try {
+            Sort::selected_delete($data);
+            Db::commit();
+            return json(['code' => 200, 'message' => '删除栏目成功！']);
+        } catch (\Exception $e) {
+            Db::rollback();
+            return json(['code' => 500, 'message' => '删除栏目失败，请稍后再试！']);
+        }
+    }
+
+
+    /**
      * 编辑栏目
      * @param Request $request
      * @return \think\response\Json

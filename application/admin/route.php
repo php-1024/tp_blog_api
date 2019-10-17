@@ -42,6 +42,8 @@ Route::group('admin', function () {
             Route::any('category_list', 'admin/Category/category_list');
             // 添加栏目
             Route::any('category_add', 'admin/Category/category_add');
+            // 删除栏目
+            Route::any('category_delete', 'admin/Category/category_delete');
             // 编辑栏目
             Route::any('category_edit', 'admin/Category/category_edit');
             // 首页导航栏列表
