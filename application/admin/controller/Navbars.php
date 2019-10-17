@@ -25,4 +25,23 @@ class Navbars extends Controller
         return json(['code' => 200, 'message' => 'ok', 'data' => $navbar_list]);
     }
 
+
+
+    public function navbar_add(Request $request)
+    {
+
+    }
+
+
+    public function navbar_delete(Request $request)
+    {
+
+    }
+
+
+    public function navbar_edit(Request $request)
+    {
+
+    }
+
 }

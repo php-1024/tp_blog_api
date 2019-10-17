@@ -36,18 +36,28 @@ Route::group('admin', function () {
             Route::any('view_log', 'admin/System/view_log');
         });
 
-        // 栏目管理
+        // 栏目分类管理
         Route::group('category', function () {
             // 栏目分类列表
             Route::any('category_list', 'admin/Category/category_list');
-            // 添加栏目
+            // 添加栏目分类
             Route::any('category_add', 'admin/Category/category_add');
-            // 删除栏目
+            // 删除栏目分类
             Route::any('category_delete', 'admin/Category/category_delete');
-            // 编辑栏目
+            // 编辑栏目分类
             Route::any('category_edit', 'admin/Category/category_edit');
-            // 首页导航栏列表
-            Route::any('navbar_list', 'admin/Category/navbar_list');
+        });
+
+        // 导航栏管理
+        Route::group('navbar', function () {
+            // 导航栏列表
+            Route::any('navbar_list', 'admin/Navbars/navbar_list');
+            // 添加导航栏
+            Route::any('navbar_add', 'admin/Navbars/navbar_add');
+            // 删除导航栏
+            Route::any('navbar_delete', 'admin/Navbars/navbar_delete');
+            // 编辑导航栏
+            Route::any('navbar_edit', 'admin/Navbars/navbar_edit');
         });
 
         // 文章管理
