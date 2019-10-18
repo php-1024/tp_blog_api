@@ -75,9 +75,9 @@ class ExportExcel extends Controller
             $export_data['J'] = self::area($val['shop_id'], 1);
             $export_data['K'] = self::area($val['shop_id'], 2);
             $export_data['L'] = self::area($val['shop_id'], 3);
-            $export_data['M'] = self::address($val['shop_id'], $val['address']);
-            $export_data['N'] = self::area($val['shop_id'], 4);
-            $export_data['O'] = self::address($val['shop_id'], $val['address']);
+            $export_data['M'] = $val['address'];
+            $export_data['N'] = $val['address'];
+            $export_data['O'] = $val['address'];
             $export_data['P'] = $val['lng'];
             $export_data['Q'] = $val['lat'];
             $export_data['R'] = $val['type'];
