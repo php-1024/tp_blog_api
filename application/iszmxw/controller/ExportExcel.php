@@ -37,6 +37,7 @@ class ExportExcel extends Controller
             ->fetchSql(true)
             ->select();
         dump($list);exit;
+
         $objPHPExcel = new \PHPExcel();
 
         //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
