@@ -80,7 +80,7 @@ class ExportExcel extends Controller
             $export_data['O'] = self::address($val['shop_id'], $val['address']);
             $export_data['P'] = $val['lng'];
             $export_data['Q'] = $val['lat'];
-            $export_data['R'] = self::scence($val['type']);
+            $export_data['R'] = $val['type'];
             $export_data['S'] = '是';
             $export_data['T'] = 750;
             $export_data['U'] = '是';
