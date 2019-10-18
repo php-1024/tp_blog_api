@@ -27,6 +27,13 @@ class Navbars extends Controller
     }
 
 
+    /**
+     * 网站导航栏排序
+     * @param Request $request
+     * @return \think\response\Json
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/10/18 22:15
+     */
     public function navbar_sort(Request $request)
     {
         $data = $request->param();
