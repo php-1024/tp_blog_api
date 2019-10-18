@@ -19,7 +19,7 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
-        $list = file_get_contents('import/json/iszmxw/data.json');
+        $list = file_get_contents('json/dlc_facility.json');
         $list = json_decode($list, true);
 
         $objPHPExcel = new \PHPExcel();
