@@ -19,6 +19,7 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
+        ini_set('max_execution_time', 0);
         $list = file_get_contents('json/dlc_facility.json');
         $list = json_decode($list, true);
 
