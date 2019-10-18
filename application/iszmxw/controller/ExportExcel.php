@@ -34,8 +34,9 @@ class ExportExcel extends Controller
             ->alias('a')
             ->join('shop_set b', 'a.shop_id=b.id', 'left')
             ->join('shop_type c', 'b.type_id=c.id', 'left')
-            ->select()
-            ->toArray();
+            ->fetchSql(true)
+            ->select();
+        dump($list);exit;
         $objPHPExcel = new \PHPExcel();
 
         //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
@@ -126,7 +127,12 @@ class ExportExcel extends Controller
         exit;
     }
 
-    // 获取地址
+    /**
+     * 获取地址
+     * @param $shop_id
+     * @param int $type
+     * @return mixed|string
+     */
     public static function area($shop_id, $type = 1)
     {
         if (empty($shop_id)) {
@@ -275,7 +281,8 @@ class ExportExcel extends Controller
     // 将json数据转换为excel
     public function json_excel(Request $request)
     {
-        dump("iszmxw");exit;
+        dump("iszmxw");
+        exit;
         $json_string = file_get_contents('json/excel.json');
         // 用参数true把JSON字符串强制转成PHP数组
         $data = json_decode($json_string, true);
