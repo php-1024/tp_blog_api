@@ -52,6 +52,8 @@ Route::group('admin', function () {
         Route::group('navbar', function () {
             // 导航栏列表
             Route::any('navbar_list', 'admin/Navbars/navbar_list');
+            // 导航栏列表排序
+            Route::any('navbar_sort', 'admin/Navbars/navbar_sort');
             // 添加导航栏
             Route::any('navbar_add', 'admin/Navbars/navbar_add');
             // 删除导航栏
