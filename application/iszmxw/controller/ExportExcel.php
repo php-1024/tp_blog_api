@@ -19,24 +19,8 @@ class ExportExcel extends Controller
     // 导出excel方法
     public function export_excel(Request $request)
     {
-        $list = Facility::where([])
-            ->field([
-                'a.id',
-                'a.machine_code',
-                'a.machine_name',
-                'a.shop_id',
-                'a.address',
-                'a.lat',
-                'a.lng',
-                'b.type_id',
-                'c.type',
-            ])
-            ->alias('a')
-            ->join('shop_set b', 'a.shop_id=b.id', 'left')
-            ->join('shop_type c', 'b.type_id=c.id', 'left')
-            ->fetchSql(true)
-            ->select();
-        dump($list);exit;
+        $list = file_get_contents('import/json/iszmxw/data.json');
+        $list = json_decode($list, true);
 
         $objPHPExcel = new \PHPExcel();
 
