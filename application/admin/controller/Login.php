@@ -22,7 +22,7 @@ class Login extends Controller
      */
     public function login(Request $request)
     {
-        dump($_SERVER);
+        dump($_SERVER['HTTP_HOST']);
         die();
         $data = $request->param();
         if (empty($data['username'])) {
