@@ -22,6 +22,8 @@ class Login extends Controller
      */
     public function login(Request $request)
     {
+        dump($_SERVER);
+        die();
         $data = $request->param();
         if (empty($data['username'])) {
             return json(['code' => 500, 'message' => '请输入用户名！']);
@@ -29,7 +31,7 @@ class Login extends Controller
         if (empty($data['password'])) {
             return json(['code' => 500, 'message' => '请输入密码！']);
         }
-        $ip = $request->ip();
+        $ip      = $request->ip();
         $address = Tooling::address($ip);
         if ($address === false) {
             $address['location'] = "本地开发登录";
@@ -40,11 +42,11 @@ class Login extends Controller
                 $token = md5(time() . rand(1000, 9999));
                 Cache::set($token, $res);
                 LoginLog::AddData([
-                    'user_id' => $res['id'],
+                    'user_id'  => $res['id'],
                     'username' => $res['username'],
-                    'role' => $res['role'],
-                    'ip' => $ip,
-                    'address' => $address['location'],
+                    'role'     => $res['role'],
+                    'ip'       => $ip,
+                    'address'  => $address['location'],
                 ]);
                 return json(['code' => 200, 'message' => '恭喜您登录成功！', 'data' => ['token' => $token]]);
             } else {
@@ -65,9 +67,9 @@ class Login extends Controller
      */
     public function logout(Request $request)
     {
-        $token = $request->param('token');
+        $token      = $request->param('token');
         $AdminToken = $request->header('Admin-Token');
-        $token = empty($token) ? $AdminToken : $token;
+        $token      = empty($token) ? $AdminToken : $token;
         Cache::rm($token);
         return json(['code' => 200, 'message' => '操作成功']);
     }
@@ -82,8 +84,8 @@ class Login extends Controller
      */
     public function info(Request $request)
     {
-        $admin_data = $request->__get('admin_data');
-        $domain = $request->domain();
+        $admin_data           = $request->__get('admin_data');
+        $domain               = $request->domain();
         $admin_data['avatar'] = $domain . "/static/images/user.gif";
         unset($admin_data['password']);
         return json(['code' => 200, 'message' => '获取用户信息成功！', 'data' => $admin_data]);
