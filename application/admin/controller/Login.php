@@ -22,8 +22,6 @@ class Login extends Controller
      */
     public function login(Request $request)
     {
-        dump($_SERVER['HTTP_HOST']);
-        die();
         $data = $request->param();
         if (empty($data['username'])) {
             return json(['code' => 500, 'message' => '请输入用户名！']);
@@ -37,6 +35,8 @@ class Login extends Controller
             $address['location'] = "本地开发登录";
         }
         $res = User::getOne(['username' => $data['username']]);
+        dump($res);
+        die();
         if ($res) {
             if ($res['password'] === md5($data['password'])) {
                 $token = md5(time() . rand(1000, 9999));
