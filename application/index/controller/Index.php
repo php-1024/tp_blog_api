@@ -23,8 +23,6 @@ class Index
                         <span style="font-size:30px">十年磨一剑 - 为API开发设计的高性能框架</span>
                     </p>
                     <span style="font-size:22px;">[ V5.0 版本由 <a href="http://www.iszmxw.com" target="qiniu">七牛云</a> 独家赞助发布 ]</span>
-                </div>
-                <script type="text/javascript" src="https://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>
-                ';
+                </div>';
     }
 }
