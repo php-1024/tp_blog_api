@@ -60,7 +60,7 @@ if ($_SERVER['HTTP_HOST'] === "iszmxw.com") {
         // 数据库类型
         'type'            => 'mysql',
         // 服务器地址
-        'hostname'        => '46.29.162.178',
+        'hostname'        => '103.44.61.204',
         // 数据库名
         'database'        => 'iszmxw_com',
         // 用户名
