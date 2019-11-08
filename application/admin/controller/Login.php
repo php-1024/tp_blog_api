@@ -35,8 +35,6 @@ class Login extends Controller
             $address['location'] = "本地开发登录";
         }
         $res = User::getOne(['username' => $data['username']]);
-        dump($res);
-        die();
         if ($res) {
             if ($res['password'] === md5($data['password'])) {
                 $token = md5(time() . rand(1000, 9999));
