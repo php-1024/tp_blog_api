@@ -6,5 +6,5 @@
  * Time: 9:48
  */
 
-exec("cd /home/wwwroot/api_54zm_com && git pull", $res);
+exec("cd /home/wwwroot/iszmxw.com && git pull", $res);
 var_dump($res);
